@@ -1,22 +1,38 @@
-# fly.toml app configuration file generated for website-base-frontend-small-grass-1409 on 2024-07-13T12:51:07-04:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+app = "website-base-frontend-small-grass-1409"
 
-app = 'website-base-frontend-small-grass-1409'
-primary_region = 'ord'
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
 
-[build]
+[env]
 
-[http_service]
-  internal_port = 80
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
 
-[[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
-  cpus = 1
+[[services]]
+  http_checks = []
+  internal_port = 8043
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+    force_https = true
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"

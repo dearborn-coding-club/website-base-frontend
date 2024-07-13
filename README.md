@@ -5,3 +5,6 @@ Check out the backend configuration [here](https://github.com/dearborn-coding-cl
 ## Running locally
 - Run `npm install`
 - Run `npm run dev`
+
+## Building locally
+- Run `npm run build`
