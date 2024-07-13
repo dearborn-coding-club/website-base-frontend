@@ -1,4 +1,4 @@
-app = "website-base-frontend-small-grass-1409"
+app = "website-base-frontend"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
