@@ -11,10 +11,31 @@ function Nav() {
         setNavRevealedState(ns => !ns);
     }
 
+
+    const hamburgerStyle = {
+        transform: 'rotate(0.625turn)',
+        color: 'white'
+    };
+
+    const hamburgerFirstStyle = {
+        transform: 'rotate(90deg) translate(0px, -33px)'
+    };
+
+    const hamburgerLastStyle = {
+        width: '0',
+        opacity: '0',
+    };
+
     return (
       <header>
         <img className="logo" src={DccDark} />
-        <button id="nav-reveal" onClick={toggleNavState}>X</button>
+        <button id="navbar-btn" onClick={toggleNavState}>
+          <svg class="hamburger" viewBox="0 0 40 40" style={navRevealedState ? hamburgerStyle : {}}>
+            <rect x="4" fill="currentColor" y="11" width="32" height="2" rx="2" ry="1" style={navRevealedState ? hamburgerFirstStyle : {}}></rect>
+            <rect x="4" fill="currentColor" y="19" width="32" height="2" rx="2" ry="1"></rect>
+            <rect x="4" fill="currentColor" y="27" width="32" height="2" rx="2" ry="1"style={navRevealedState ? hamburgerLastStyle : {}}></rect>
+          </svg>
+        </button>
         <nav style={{ transform: `translateX(${navRevealedState ? '0' : '-100vw'})` }}>
           <ul>
             <li><a href="/">Home</a></li>

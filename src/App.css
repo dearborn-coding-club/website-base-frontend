@@ -4,6 +4,10 @@
 }
 
 header {
+  background-color: #242424;
+  position: sticky;
+  z-index: 9999;
+  top: 0;
   height: 15vh;
   display: flex;
   align-items: center;
@@ -14,9 +18,10 @@ header > nav {
   position: fixed;
   left: 0;
   top: 0;
+  transform: translate(-100vw);
   z-index: 100;
   display: flex;
-  justify-content: center;
+  place-items: center;
   background-color: inherit;
   font-size: 1.5rem;
   font-weight: 500;
@@ -27,12 +32,16 @@ header > nav {
 }
 
 nav > ul {
+  display: flex;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
-  padding-block: 10em;
+  align-items: center;
+  height: 90%;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -67,10 +76,15 @@ main {
   color: var(--primary-color);
 }
 
-#nav-reveal {
+#navbar-btn {
+  border-style: none;
+  background-color: inherit;
   z-index: 999;
-  position: relative;
-  height: 60%;
+  width: 60px;
+}
+
+#navbar-btn .hamburger {
+  transition: all 250ms ease-in-out;
 }
 
 #dcc-nav {
@@ -139,18 +153,33 @@ main {
 }
 
 @media screen and (min-width: 600px) {
-    .supporting-points {
-        grid-template-columns: 1fr;
-        /* grid-template-rows: repeat(9, 14vh); */
-    }
+  header {
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .supporting-points > div {
-        display: grid;
-        grid-row: auto / span 3;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
-        grid-template-rows: repeat(4, 1fr);
-    }
+  nav {
+    position: static;
+    z-index: 1;
+    opacity: 1;
+    align-items: center;
+    transform: translate(0);
+    width: auto;
+    height: auto;
+  }
+
+  .supporting-points {
+    grid-template-columns: 1fr;
+    /* grid-template-rows: repeat(9, 14vh); */
+  }
+
+  .supporting-points > div {
+    display: grid;
+    grid-row: auto / span 3;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    grid-template-rows: repeat(4, 1fr);
+  }
 
 }
 
@@ -159,6 +188,7 @@ main {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
