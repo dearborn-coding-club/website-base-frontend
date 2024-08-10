@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
+import Card from './Card.tsx';
 import DccDark from './assets/dcc_dark.svg';
 import MimiEye from './assets/mimi_eye.gif';
 
@@ -74,30 +74,24 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <div className="support__point">
-              <img className="sp__image" src="#" />
-              <div className="sp__text">
-                <span>
-                  Bring <br />
-                  <span className="text-highlight">questions</span> <br />
-                  and <br />
-                  <span className="text-highlight">projects</span>
-                </span>
-              </div>
-            </div>
-            <div className="support__point">
-              <img className="sp__image" src="#" />
-              <div className="sp__text">
-                <span>
-                  Enjoy <br />
-                  <span className="text-highlight">Yemeni Coffee</span>
-                </span>
-              </div>
-            </div>
+            <Card>
+              <span>
+                Bring <br />
+                <span className="text-highlight">questions</span> <br />
+                and <br />
+                <span className="text-highlight">projects</span>
+              </span>
+            </Card>
+            <Card>
+              <span>
+                Enjoy <br />
+                <span className="text-highlight">Yemeni Coffee</span>
+              </span>
+            </Card>
           </div>
-          <button className="cta">
-            Join the next meetup!
-          </button>
+        <button className="cta">
+          Join the next meetup!
+        </button>
         </main>
       </>
     );
