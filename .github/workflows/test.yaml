@@ -10,4 +10,5 @@ jobs:
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
+      - run: npm install
       - run: npm run build
