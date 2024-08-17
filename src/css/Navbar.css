@@ -1,0 +1,72 @@
+.Navbar {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    padding: 5px;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Navbar .navbar-logo {
+    height: 90px;
+}
+
+.Navbar .navbar-btn {
+    cursor: pointer;
+    border-style: none;
+    background-color: inherit;
+    width: 60px;
+}
+
+.hamburger {
+    transition: all 500ms ease-in-out;
+    color: var(--primary-color);
+}
+
+.Navbar .rotateViewBox {
+    transform: rotate(0.625turn);
+}
+
+.Navbar .rotateRect {
+    transform: rotate(90deg) translate(0px, -33px);
+}
+
+.Navbar .invisible {
+    width: 0;
+    opacity: 0;
+}
+
+.Menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 500ms ease-in-out;
+    left: 0px;
+    color: white;
+    font-size: 36px;
+}
+
+.Menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.Menu a:hover {
+    color:#f5c24f; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+.menu-hidden {
+    left: -100vw;
+}
+  

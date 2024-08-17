@@ -1,10 +1,16 @@
-import './App.css'
-import Home from './Home.tsx';
+import './css/App.css'
+import Home from './pages/Home'
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-function App() {
+export default function App() {
     return (
-      <Home />
+      <div className='App'>
+        <Navbar/>
+        <div className='app-body'>
+          <Home/>
+          <Footer/>
+        </div>
+      </div>
     );
 }
-
-export default App

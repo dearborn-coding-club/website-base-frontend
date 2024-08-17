@@ -1,0 +1,27 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.image-text-style {
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.heighlight {
+    color: #f5c24f;
+}
+
+@media (max-width:600px)  { 
+    .row {
+        flex-direction: column;
+    }
+}
