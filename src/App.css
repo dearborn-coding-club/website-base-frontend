@@ -113,7 +113,7 @@ main {
 }
 
 .sp__text {
-  font-size: clamp(0.875rem, 4.25vw + 0.71875rem, 3rem);
+  font-size: 1rem;
   /*
   display: flex;
   align-items: center;
