@@ -44,11 +44,11 @@ export default function Home() {
               <p>
                 If you're interested in collaborating, we're currently working on this website for the group. We've got a few repositories that manage the infrastructure and the code here:
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-backend'>website-base-backend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-backend' style={{ color: '#ADD8E6' }}>website-base-backend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-frontend'>website-base-frontend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-frontend' style={{ color: '#ADD8E6' }}>website-base-frontend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website'>Terraform-infra-website</a>
+                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website' style={{ color: '#ADD8E6' }}>Terraform-infra-website</a>
               </p>
               <p>
                 We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com'>https://dearborncodingclub.slack.com</a>.
