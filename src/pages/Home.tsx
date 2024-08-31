@@ -51,7 +51,7 @@ export default function Home() {
                 <a href='https://github.com/dearborn-coding-club/Terraform-infra-website' style={{ color: '#ADD8E6' }}>Terraform-infra-website</a>
               </p>
               <p>
-                We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com'>https://dearborncodingclub.slack.com</a>.
+                We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com' style={{ color: '#ADD8E6' }}>https://dearborncodingclub.slack.com</a>.
               Space is limited so we'll look to capture the table in the back before it gets filled with other folks!make it short and professional
               </p>
             </>
