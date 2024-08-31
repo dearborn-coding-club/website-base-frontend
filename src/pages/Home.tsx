@@ -42,16 +42,17 @@ export default function Home() {
               <p>
                 Come work on whatever side project that you're looking into while getting to know some interesting folks and enjoying some Yemeni coffee at Haraz Coffee in Dearborn! We're an inclusive group of curious builders so bring questions, answers, projects, or just an interest in meeting new people!</p>
               <p>
-                If you're interested in collaborating, we're currently working on a website for the group (<a href='#'>https://dearborncodingclub.com</a>). We've got a few repositories that manage the infrastructure and the code here:
+                If you're interested in collaborating, we're currently working on this website for the group. We've got a few repositories that manage the infrastructure and the code here:
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-backend'>https://github.com/dearborn-coding-club/website-base-backend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-backend'>website-base-backend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-frontend'>https://github.com/dearborn-coding-club/website-base-frontend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-frontend'>website-base-frontend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website'>https://github.com/dearborn-coding-club/Terraform-infra-website</a>
+                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website'>Terraform-infra-website</a>
               </p>
               <p>
-                We've also recently started up a slack organization that can be found here: https://dearborncodingclub.slack.com Space is limited so we'll look to capture the table in the back before it gets filled with other folks!make it short and professional
+                We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com'>https://dearborncodingclub.slack.com</a>.
+              Space is limited so we'll look to capture the table in the back before it gets filled with other folks!make it short and professional
               </p>
             </>
           }
