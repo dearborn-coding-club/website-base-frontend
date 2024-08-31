@@ -3,6 +3,7 @@ name: Upload Website
 on:
   push:
     branches:
+    - feature/*
     - s3_github_action
 
 
