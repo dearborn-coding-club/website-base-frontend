@@ -22,7 +22,7 @@ export default function Navbar() {
 
       <div className={navRevealedState?'Menu':'Menu menu-hidden'}>
         <a href="/">Home</a>
-        <a href="/notes">Testing</a>
+        <a href="/notes">Past Meeting Notes</a>
       </div>
     </>
   );
