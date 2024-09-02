@@ -16,7 +16,7 @@ const AppRouter = () => {
           errorElement: <ErrorPage />,
         },
         {
-          path: "/notes/",
+          path: "/notes",
           element: <Notes />,
         },
       ])}
