@@ -5,7 +5,7 @@ const Notes: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
