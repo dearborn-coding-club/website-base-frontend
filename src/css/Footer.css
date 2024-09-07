@@ -26,7 +26,7 @@
     cursor: pointer;
 }
 
-@media (max-width:480px)  { 
+@media (max-width:768px)  { 
     .Footer {
         flex-direction: column;
         height: fit-content;
