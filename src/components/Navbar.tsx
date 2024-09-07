@@ -1,6 +1,7 @@
 import '../css/Navbar.css'
 import DCCLogoDark from '../assets/dcc_dark.svg'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
 
@@ -22,7 +23,7 @@ export default function Navbar() {
 
       <div className={navRevealedState?'Menu':'Menu menu-hidden'}>
         <a href="/">Home</a>
-        <a href="/notes">Past Meeting Notes</a>
+        <Link to="/note">Past Meeting Notes</Link>
       </div>
     </>
   );
