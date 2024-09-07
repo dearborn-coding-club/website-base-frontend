@@ -22,8 +22,8 @@ export default function Navbar() {
       </div>
 
       <div className={navRevealedState?'Menu':'Menu menu-hidden'}>
-        <Link to="/">Home</Link>
-        <Link to="/notes">Past Meeting Notes</Link>
+        <Link to="/" onClick={() => setNavRevealedState(false)}>Home</Link>
+        <Link to="/notes" onClick={() => setNavRevealedState(false)}>Past Meeting Notes</Link>
       </div>
     </>
   );
