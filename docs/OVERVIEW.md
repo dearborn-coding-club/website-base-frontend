@@ -90,7 +90,7 @@ The application uses React Context for theme management:
 
 ## Contributing
 
-To contribute to the front-end:
+To contribute to the front-end, follow our [CONTRIBUTING.md](https://github.com/dearborn-coding-club/website-base-frontend/blob/main/CONTRIBUTING.md) guidance, as well as the following general rules:
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/your-username/website-base-frontend.git`
