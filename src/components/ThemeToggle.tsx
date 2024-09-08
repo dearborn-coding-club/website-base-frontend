@@ -3,7 +3,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { Moon, Sun } from 'lucide-react';
 import '../css/ThemeToggle.css';
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
