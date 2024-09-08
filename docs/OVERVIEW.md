@@ -101,6 +101,15 @@ To contribute to the front-end, follow our [CONTRIBUTING.md](https://github.com/
 7. Push to your fork: `git push origin feature/your-feature-name`
 8. Create a pull request from your fork to the main repository
 
+or if you are already a contributor to the project:
+
+1. Clone the repository `git clone https://github.com/dearborn-coding-club/website-base-frontend.git`
+2. Create a new branch: git checkout -b feature/your-feature-name
+3. Test your changes locally
+4. Commit your changes: `git commit -m "Add your commit message"`
+5. Push to your branch: `git push -u origin feature/your-feature-name`
+6. Create a pull request on the website-base-frontend repository
+
 When contributing, please:
 
 - Follow the existing code style and conventions
