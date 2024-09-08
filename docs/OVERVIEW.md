@@ -111,7 +111,7 @@ or if you are already a contributor to the project:
 6. Create a pull request on the website-base-frontend repository
 
 When contributing, please:
-
+- Follow the guidance in our [CONTRIBUTING.md](https://github.com/dearborn-coding-club/website-base-frontend/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/dearborn-coding-club/website-base-frontend/blob/main/CODE_OF_CONDUCT.md) documents.
 - Follow the existing code style and conventions
 - Write clear, concise commit messages
 - Update documentation as necessary
