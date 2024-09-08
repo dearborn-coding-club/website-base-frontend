@@ -44,14 +44,14 @@ export default function Home() {
               <p>
                 If you're interested in collaborating, we're currently working on this website for the group. We've got a few repositories that manage the infrastructure and the code here:
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-backend' style={{ color: '#ADD8E6' }}>website-base-backend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-backend' className='link-color'>website-base-backend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/website-base-frontend' style={{ color: '#ADD8E6' }}>website-base-frontend</a>
+                <a href='https://github.com/dearborn-coding-club/website-base-frontend' className='link-color'>website-base-frontend</a>
                 <br/>
-                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website' style={{ color: '#ADD8E6' }}>Terraform-infra-website</a>
+                <a href='https://github.com/dearborn-coding-club/Terraform-infra-website' className='link-color'>Terraform-infra-website</a>
               </p>
               <p>
-                We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com' style={{ color: '#ADD8E6' }}>https://dearborncodingclub.slack.com</a>.
+                We've also recently started up a slack organization that can be found here: <a href='https://dearborncodingclub.slack.com' className='link-color'>https://dearborncodingclub.slack.com</a>.
               Space is limited so we'll look to capture the table in the back before it gets filled with other folks!make it short and professional
               </p>
             </>

@@ -1,0 +1,27 @@
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --card-bg-color: #fff;
+  --link-color: #1a73e8;
+}
+
+[data-theme="dark"] {
+  --bg-color: #333;
+  --text-color: #f5f5f5;
+  --card-bg-color: #444;
+  --link-color: #4da3ff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.card {
+  background-color: var(--card-bg-color);
+}
