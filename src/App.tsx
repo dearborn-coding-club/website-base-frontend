@@ -10,11 +10,11 @@ export default function App() {
       <div className='App'>
         <Navbar/>
         <div className='app-body'>
-        <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/notes' element={<Notes/>} />
-        </Routes>
-        <Footer/>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/notes' element={<Notes/>} />
+          </Routes>
+          <Footer/>
         </div>
       </div>
     );
