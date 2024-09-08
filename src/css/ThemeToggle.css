@@ -1,7 +1,9 @@
 .theme-toggle {
-  display: flex;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1;
 }
+
+
+
