@@ -13,16 +13,16 @@ graph TD
     F --> H[Home]
     F --> I[Notes]
     H --> J[Card Component]
-    style A fill:#f9d5e5,stroke:#333,stroke-width:2px
-    style B fill:#eeac99,stroke:#333,stroke-width:2px
-    style C fill:#e06377,stroke:#333,stroke-width:2px
-    style D fill:#c83349,stroke:#333,stroke-width:2px
-    style E fill:#5b9aa0,stroke:#333,stroke-width:2px
-    style F fill:#d6d4e0,stroke:#333,stroke-width:2px
-    style G fill:#b8a9c9,stroke:#333,stroke-width:2px
-    style H fill:#622569,stroke:#333,stroke-width:2px
-    style I fill:#622569,stroke:#333,stroke-width:2px
-    style J fill:#843b62,stroke:#333,stroke-width:2px
+style A fill:#ffb3c1,stroke:#000,stroke-width:2px
+style B fill:#ff9980,stroke:#000,stroke-width:2px
+style C fill:#ff5a5a,stroke:#000,stroke-width:2px
+style D fill:#e60033,stroke:#000,stroke-width:2px
+style E fill:#60c3d0,stroke:#000,stroke-width:2px
+style F fill:#f0edf9,stroke:#000,stroke-width:2px
+style G fill:#d1c3f5,stroke:#000,stroke-width:2px
+style H fill:#9a4bc6,stroke:#000,stroke-width:2px  
+style I fill:#9a4bc6,stroke:#000,stroke-width:2px  
+style J fill:#d43d71,stroke:#000,stroke-width:2px  
 ```
 
 ## Diagram Explanation
