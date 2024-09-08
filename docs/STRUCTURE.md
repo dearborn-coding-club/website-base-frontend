@@ -1,3 +1,8 @@
+# Frontend Structure
+
+Below is a diagram illustrating the structure of our frontend application:
+
+```mermaid
 graph TD
     A[main.tsx] -->|Renders| B[App.tsx]
     B --> C[BrowserRouter]
@@ -18,3 +23,17 @@ graph TD
     style H fill:#622569,stroke:#333,stroke-width:2px
     style I fill:#622569,stroke:#333,stroke-width:2px
     style J fill:#843b62,stroke:#333,stroke-width:2px
+```
+
+## Diagram Explanation
+
+- `main.tsx` is the entry point of our application.
+- `App.tsx` is the main component that sets up the overall structure.
+- We use `BrowserRouter` for handling routing in our application.
+- `ThemeProvider` wraps our app to provide theming capabilities.
+- `Navbar` and `Footer` are consistent across all pages.
+- `Routes` component manages different page routes.
+- `Home` and `Notes` are our main page components.
+- `Card Component` is used within the `Home` page to display information.
+
+The colors in the diagram represent different levels or types of components in our structure.
