@@ -99,7 +99,7 @@ export default function Home() {
             }
           }
           imagetext={
-            <div className="image-text-style">
+            <div className="image-text-style" style={{color: 'white'}}>
               <p>Know our</p>
               <p className='heighlight'>Projects</p>
             </div>
