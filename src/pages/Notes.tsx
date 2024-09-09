@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import '../css/theme.css'
-import { CircleArrowLeft, ArrowLeft } from 'lucide-react';
+import { CircleArrowLeft } from 'lucide-react';
 
 const Notes: React.FC = () => {
   const navigate = useNavigate();
