@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <>
       <div className='Navbar' style={{backgroundColor: theme === 'light' ? 'var(--bg-color)' : 'var(--bg-color)'}}>
-        <img className='navbar-logo' src={theme === 'light' ? DCCLogoLight : DCCLogoDark} alt="DCC Logo" />
+        <img className='navbar-logo' src={theme === 'light' ? DCCLogoLight : DCCLogoDark} alt="DCC Logo" onClick={() => window.location.href = '/'} style={{ cursor: 'pointer' }} />
         
         <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
           <ThemeToggle/>
