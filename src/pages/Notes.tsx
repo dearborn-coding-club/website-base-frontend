@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import '../css/theme.css'
+import { CircleArrowLeft } from 'lucide-react';
 
 const Notes: React.FC = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const Notes: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         height: "100vh",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "var(--bg-color)",
         padding: "20px",
         boxSizing: "border-box",
       }}
@@ -31,22 +33,24 @@ const Notes: React.FC = () => {
         <button
           onClick={handleGoBack}
           style={{
-            backgroundColor: "#333",
-            color: "#fff",
+            backgroundColor: "transparent",
+            color: "var(--text-color)",
             border: "none",
-            padding: "10px 20px",
+            padding: "0px 20px 10px 20px",
             borderRadius: "5px",
-            fontSize: "16px",
+            fontSize: "24px",
             cursor: "pointer",
+            display: 'flex',
+            alignItems: "center",
           }}
         >
-          Go Back
+          <CircleArrowLeft size={45}/>
         </button>
         <h1
           style={{
             fontSize: "48px",
             fontWeight: "bold",
-            color: "#333",
+            color: "var(--text-color)",
           }}
         >
           Notes
@@ -65,7 +69,7 @@ const Notes: React.FC = () => {
         <p
           style={{
             fontSize: "18px",
-            color: "#666",
+            color: "var(--text-color)",
             textAlign: "center",
             maxWidth: "600px",
           }}
