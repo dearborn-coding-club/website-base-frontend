@@ -2,19 +2,25 @@ import '../css/Navbar.css'
 import DCCLogoDark from '../assets/dcc_dark.svg'
 import DCCLogoLight from '../assets/dcc_light.svg'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function Navbar() {
-
-  let [navRevealedState, setNavRevealedState] = useState(false);
-  const { theme } = useTheme()
+  const [navRevealedState, setNavRevealedState] = useState(false);
+  const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <>
       <div className='Navbar' style={{backgroundColor: theme === 'light' ? 'var(--bg-color)' : 'var(--bg-color)'}}>
-        <img className='navbar-logo' src={theme === 'light' ? DCCLogoLight : DCCLogoDark} alt="DCC Logo" onClick={() => window.location.href = '/'} style={{ cursor: 'pointer' }} />
+        <img 
+          className='navbar-logo' 
+          src={theme === 'light' ? DCCLogoLight : DCCLogoDark} 
+          alt="DCC Logo" 
+          onClick={() => navigate('/')} 
+          style={{ cursor: 'pointer' }} 
+        />
         
         <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
           <ThemeToggle/>
