@@ -1,71 +1,111 @@
 .Navbar {
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    height: 100px;
-    width: 100%;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
 }
 
 .Navbar .navbar-logo {
-    height: 90px;
+  height: 90px;
 }
 
 .Navbar .navbar-btn {
-    cursor: pointer;
-    border-style: none;
-    background-color: inherit;
-    width: 60px;
+  cursor: pointer;
+  border-style: none;
+  background-color: inherit;
+  width: 60px;
 }
 
 .hamburger {
-    transition: all 500ms ease-in-out;
-    color: var(--primary-color);
+  transition: all 500ms ease-in-out;
+  color: var(--primary-color);
 }
 
 .Navbar .rotateViewBox {
-    transform: rotate(0.625turn);
+  transform: rotate(0.625turn);
 }
 
 .Navbar .rotateRect {
-    transform: rotate(90deg) translate(0px, -33px);
+  transform: rotate(90deg) translate(0px, -33px);
 }
 
 .Navbar .invisible {
-    width: 0;
-    opacity: 0;
+  width: 0;
+  opacity: 0;
 }
 
 .Menu {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    justify-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: rgba(0, 0, 0, 0.8);
-    transition: all 500ms ease-in-out;
-    left: 0px;
-    color: white;
-    font-size: 36px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  transition: all 300ms ease-in-out;
+  opacity: 1;
+  visibility: visible;
 }
 
 .Menu a {
-    color: white;
-    text-decoration: none;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 20px;
+  font-size: 24px;
+  margin: 10px 0;
 }
 
 .Menu a:hover {
-    color:#f5c24f; 
-    text-decoration:none; 
-    cursor:pointer;  
+  border-radius: 3px;
 }
 
 .menu-hidden {
-    left: -100vw;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-  
+
+@media (min-width: 768px) {
+  .Menu {
+    position: fixed;
+    top: 100px;
+    left: auto;
+    width: 200px;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .Menu a {
+    font-size: 18px;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .Menu a {
+    transition:
+      background-color 300ms ease-in-out,
+      color 300ms ease-in-out,
+      border-radius 300ms ease-in-out;
+  }
+
+  .Menu a:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 3px;
+  }
+}
