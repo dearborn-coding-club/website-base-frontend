@@ -1,14 +1,14 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import '../css/theme.css'
-import { CircleArrowLeft } from 'lucide-react';
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import "../css/theme.css"
+import { CircleArrowLeft } from "lucide-react"
 
 const Notes: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleGoBack = () => {
-    navigate("/");
-  };
+    navigate("/")
+  }
 
   return (
     <div
@@ -40,11 +40,11 @@ const Notes: React.FC = () => {
             borderRadius: "5px",
             fontSize: "24px",
             cursor: "pointer",
-            display: 'flex',
+            display: "flex",
             alignItems: "center",
           }}
         >
-          <CircleArrowLeft size={45}/>
+          <CircleArrowLeft size={45} />
         </button>
         <h1
           style={{
@@ -78,7 +78,7 @@ const Notes: React.FC = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Notes;
+export default Notes
