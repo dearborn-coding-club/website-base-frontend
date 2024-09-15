@@ -1,14 +1,14 @@
-import React from "react";
-import { useNavigate, useRouteError } from "react-router-dom";
+import React from "react"
+import { useNavigate, useRouteError } from "react-router-dom"
 
 interface RouterError {
-  statusText?: string;
-  message?: string;
+  statusText?: string
+  message?: string
 }
 
 const ErrorPage: React.FC = () => {
-  const error = useRouteError() as RouterError;
-  const navigate = useNavigate();
+  const error = useRouteError() as RouterError
+  const navigate = useNavigate()
 
   return (
     <div
@@ -83,7 +83,7 @@ const ErrorPage: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage
