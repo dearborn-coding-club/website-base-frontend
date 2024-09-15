@@ -5,7 +5,7 @@ import DCCGathering from "../assets/dcc_gathering.webp"
 import MimiEye from "../assets/mimi_eye.gif"
 import DCCDesign from "../assets/dccdesign1.svg"
 
-export default function Home() {
+const Home: React.FC = () => {
   const imageTextStyle = {
     fontSize: "36px",
     fontWeight: "bold",
@@ -171,3 +171,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
