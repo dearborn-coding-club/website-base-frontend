@@ -1,14 +1,43 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "../css/theme.css"
 import { CircleArrowLeft } from "lucide-react"
 
+interface ServerResponse {
+  message: string
+}
+
 const Notes: React.FC = () => {
   const navigate = useNavigate()
+  const [message, setMessage] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleGoBack = () => {
+  const handleGoBack = (): void => {
     navigate("/")
   }
+
+  useEffect(() => {
+    const fetchMessage = async (): Promise<void> => {
+      try {
+        const response = await fetch(
+          "https://api.dearborncodingclub.com/notes/"
+        )
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data: ServerResponse = await response.json()
+        setMessage(data.message)
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "An unknown error occurred")
+        console.error("Error fetching message:", e)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchMessage()
+  }, [])
 
   return (
     <div
@@ -60,22 +89,26 @@ const Notes: React.FC = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
           justifyContent: "center",
           flex: 1,
         }}
       >
-        <p
-          style={{
-            fontSize: "18px",
-            color: "var(--text-color)",
-            textAlign: "center",
-            maxWidth: "600px",
-          }}
-        >
-          Here you can find all your notes organized and easily accessible.
-        </p>
+        {isLoading ? (
+          <p>Loading message...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <p
+            style={{
+              fontSize: "18px",
+              color: "var(--text-color)",
+              textAlign: "center",
+              maxWidth: "600px",
+            }}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </div>
   )
