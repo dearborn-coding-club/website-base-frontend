@@ -1,1 +1,2 @@
-pnpm
+echo "[Husky] Running linters"
+npx lint-staged

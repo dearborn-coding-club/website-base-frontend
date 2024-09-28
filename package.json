@@ -11,8 +11,16 @@
     "prepare": "husky",
     "pre-commit": "lint-staged"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo '[Husky] Testing precommit hook!'"
+    }
+  },
   "lint-staged": {
-    "*.ts": []
+    "*.ts": [
+      "npx prettier --write",
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "lucide-react": "^0.439.0",
