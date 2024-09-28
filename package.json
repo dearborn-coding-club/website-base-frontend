@@ -11,6 +11,11 @@
     "prepare": "husky",
     "pre-commit": "lint-staged"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo '[Husky] Testing precommit hook!'"
+    }
+  },
   "lint-staged": {
     "*.ts": []
   },
