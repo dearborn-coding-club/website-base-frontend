@@ -2,6 +2,33 @@
 
 Check out the backend code [here](https://github.com/dearborn-coding-club/website-base-backend)
 
+## Architecture
+The entire architecture, currently, is as follows:
+
+```mermaid
+sequenceDiagram
+    participant FE as Front End
+    participant BE as Backend (Django)
+    participant SB as Supabase Postgres
+    participant MA as Meetup.com API
+    
+    FE->>BE: Send request
+    
+    alt Data request
+        BE->>SB: Request data
+        SB-->>BE: Return data
+        BE-->>FE: Forward data
+    else Meetup.com API request
+        BE->>MA: Request data
+        MA-->>BE: Return data
+        BE-->>FE: Forward response
+    else Notes operation
+        BE->>SB: Perform CRUD on Notes model
+        SB-->>BE: Confirm operation
+        BE-->>FE: Send confirmation/result
+    end
+```
+
 ## Running locally
 - Run `npm install`
 - Run `npm run dev`
