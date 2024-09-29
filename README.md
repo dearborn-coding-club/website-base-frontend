@@ -89,8 +89,10 @@ We currently use AWS S3 buckets to host a staging environment (http://stage.dear
 
 TLS certificates are used to validate HTTPS requests between browser clients and the servers that host our website. When the certificates become invalid after a predetermined expirations date, requests for the website will be flagged by the browser as insecure, and eventually blocked.
 
-Dearborn Coding Club leverages [Fly.io](https://fly.io)'s CLI tooling to generate TLS certificates. Adding certificates to a new `dearborncodingclub.com` instance is done with the `fly certs add dearborncodingclub.com` command. 
->[!NOTE] Fly.io generated TLS certifications are valid for 90 days, and afterwards need to be regenerated.
+Dearborn Coding Club leverages [Fly.io](https://fly.io)'s CLI tooling to generate TLS certificates. Adding certificates to a new `dearborncodingclub.com` instance is done with the `fly certs add dearborncodingclub.com` command.
+
+>[!NOTE] 
+> Fly.io generated TLS certifications are valid for 90 days, and afterwards need to be regenerated.
 
 [Fly.io](https://fly.io) handles our TLS certificates as part of their managed hosting service, though when an certificate is removed from the user interface we need to manually generated a Let's Encrypt certificate the `fly certs add dearborncodingclub.com` command.
 
