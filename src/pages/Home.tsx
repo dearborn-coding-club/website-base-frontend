@@ -61,9 +61,9 @@ const Home: React.FC = () => {
             About Us
           </h3>
           <p style={{ color: "var(--text-color)" }}>
-            Come work on whatever side project that you're looking into while
+            Come work on whatever side project that you&apos;re looking into while
             getting to know some interesting folks and enjoying some Yemeni
-            coffee at Haraz Coffee in Dearborn! We're an inclusive group of
+            coffee at Haraz Coffee in Dearborn! We&apos;re an inclusive group of
             curious builders so bring questions, answers, projects, or just an
             interest in meeting new people!
           </p>
@@ -73,8 +73,8 @@ const Home: React.FC = () => {
             Our Projects
           </h3>
           <p style={{ color: "var(--text-color)" }}>
-            If you're interested in collaborating, we're currently working on
-            this website for the group. We've got a few repositories that manage
+            If you&apos;re interested in collaborating, we&apos;re currently working on
+            this website for the group. We&apos;ve got a few repositories that manage
             the infrastructure and the code:
           </p>
           <ul style={{ listStyleType: "none", padding: 0, margin: "10px 0" }}>
@@ -112,14 +112,14 @@ const Home: React.FC = () => {
             Join Our Community
           </h3>
           <p style={{ color: "var(--text-color)" }}>
-            We've recently started a Slack organization. Join us at{" "}
+            We&apos;ve recently started a Slack organization. Join us at{" "}
             <a
               href="https://dearborncodingclub.slack.com"
               className="link-color"
             >
               dearborncodingclub.slack.com
             </a>
-            . Space is limited, so we'll aim to secure the back table before it
+            . Space is limited, so we&apos;ll aim to secure the back table before it
             fills up with other patrons.
           </p>
         </div>
