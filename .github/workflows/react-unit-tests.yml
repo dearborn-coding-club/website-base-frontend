@@ -1,4 +1,4 @@
-name: Run ReactJS Unit Tests
+name: ReactJS Unit Tests
 
 on:
   push:
