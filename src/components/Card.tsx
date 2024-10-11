@@ -7,7 +7,7 @@ type propType = {
   textStyle?: CSSProperties
   imagetext?: ReactNode
   text?: ReactNode
-}
+};
 
 export default function Card(prop: propType) {
   return (
