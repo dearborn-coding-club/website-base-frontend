@@ -1,4 +1,4 @@
-name: Run ReactJS Unit Tests
+name: Lint
 
 on:
   push:
@@ -16,5 +16,5 @@ jobs:
       run: |
         npm i
         npm run build
-    - name: Run Unit Tests
-      run: npm test
+    - name: Run Linter
+      run: npm run lint

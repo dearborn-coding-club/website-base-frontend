@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders the Card component successfully 1`] = `
+<div
+  className="Card"
+>
+  <div
+    className="card-image"
+    style={{}}
+  >
+    <span
+      style={{}}
+    />
+  </div>
+  <div
+    style={{}}
+  />
+</div>
+`;
+
 exports[`Renders the component class 1`] = `
 <div
   className="Card"

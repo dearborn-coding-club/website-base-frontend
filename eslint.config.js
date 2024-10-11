@@ -15,7 +15,9 @@ export default [
   },
   {
     ignores: [
-      'dist/'
+      'dist/',
+      'babel.config.cjs',
+      'jest.config.cjs'
     ]
   },
   {
