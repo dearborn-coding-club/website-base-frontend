@@ -17,6 +17,28 @@ const Notes: React.FC = () => {
     navigate("/")
   }
 
+  const onClick = async () => {
+    const response = await fetch("https://api.dearborncodingclub.com/v2/notes/", {
+        method: "POST",
+        body: JSON.stringify({title: "test title", content: "testcontent"}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.log("failure!")
+      throw new Error(`HTTP error! status: ${response.status}`)
+    } else {
+      console.log("success!")
+    }
+
+    const data: ServerResponse = await response.json()
+    console.log(data);
+    
+  }
+
   useEffect(() => {
     const fetchMessage = async (): Promise<void> => {
       try {
@@ -88,9 +110,6 @@ const Notes: React.FC = () => {
       </div>
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          flex: 1,
         }}
       >
         {isLoading ? (
@@ -98,16 +117,24 @@ const Notes: React.FC = () => {
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
-          <p
-            style={{
-              fontSize: "18px",
-              color: "var(--text-color)",
-              textAlign: "center",
-              maxWidth: "600px",
-            }}
-          >
-            {message}
-          </p>
+          <>
+            <div
+              style={{
+                fontSize: "18px",
+                color: "var(--text-color)",
+                display: "block"
+              }}
+            >
+              <p>{message}</p>
+            </div>
+            <div style={{ display: "block"}}>
+              <p>Please enter a new note:</p>
+              <textarea>
+
+              </textarea>
+            </div>
+            <button type="submit" onClick={onClick} style={{ width: "100px", height: "30px"}}>Submit</button>
+          </>
         )}
       </div>
     </div>
