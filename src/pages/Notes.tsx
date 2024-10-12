@@ -9,6 +9,8 @@ interface ServerResponse {
 
 const Notes: React.FC = () => {
   const navigate = useNavigate()
+  const [title, setTitle] = useState<string>("")
+  const [notes, setNotes] = useState<string>("")
   const [message, setMessage] = useState<string>("")
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -17,10 +19,19 @@ const Notes: React.FC = () => {
     navigate("/")
   }
 
-  const onClick = async () => {
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+  }
+  const onNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNotes(e.target.value)
+  }
+
+  const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     const response = await fetch("https://api.dearborncodingclub.com/v2/notes/", {
         method: "POST",
-        body: JSON.stringify({title: "test title", content: "testcontent"}),
+        body: JSON.stringify({title: title, content: notes}),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
         }
@@ -129,11 +140,18 @@ const Notes: React.FC = () => {
             </div>
             <div style={{ display: "block"}}>
               <p>Please enter a new note:</p>
-              <textarea>
-
-              </textarea>
+              <div>
+                <label htmlFor="title" style={{paddingRight: "5px"}}>Title</label>
+                <input type="text" name="title" onChange={onTitleChange} />
+              </div>
+              <br/>
+              <div>
+                <label htmlFor="content" style={{paddingRight: "5px"}}>Content</label>
+                <textarea name="content" onChange={onNotesChange}>
+                </textarea>
+              </div>
             </div>
-            <button type="submit" onClick={onClick} style={{ width: "100px", height: "30px"}}>Submit</button>
+            <button type="submit" value={notes} onClick={onClick} style={{ width: "100px", height: "30px"}}>Submit</button>
           </>
         )}
       </div>
