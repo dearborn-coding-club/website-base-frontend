@@ -1,0 +1,20 @@
+name: Lint
+
+on:
+  push:
+    branches:
+    - 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Use Node.js 
+      uses: actions/setup-node@v4
+    - name: Install
+      run: |
+        npm i
+        npm run build
+    - name: Run Linter
+      run: npm run lint

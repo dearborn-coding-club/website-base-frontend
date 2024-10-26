@@ -1,12 +1,76 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import "../css/theme.css"
+import { CircleArrowLeft } from "lucide-react"
+
+interface ServerResponse {
+  message: string
+}
 
 const Notes: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [title, setTitle] = useState<string>("")
+  const [notes, setNotes] = useState<string>("")
+  const [message, setMessage] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleGoBack = () => {
-    navigate("/");
-  };
+  const handleGoBack = (): void => {
+    navigate("/")
+  }
+
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+  }
+  const onNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNotes(e.target.value)
+  }
+
+  const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const response = await fetch("https://api.dearborncodingclub.com/v2/notes/", {
+        method: "POST",
+        body: JSON.stringify({title: title, content: notes}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.log("failure!")
+      throw new Error(`HTTP error! status: ${response.status}`)
+    } else {
+      console.log("success!")
+    }
+
+    const data: ServerResponse = await response.json()
+    console.log(data);
+    
+  }
+
+  useEffect(() => {
+    const fetchMessage = async (): Promise<void> => {
+      try {
+        const response = await fetch(
+          "https://api.dearborncodingclub.com/notes/"
+        )
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data: ServerResponse = await response.json()
+        setMessage(data.message)
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "An unknown error occurred")
+        console.error("Error fetching message:", e)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchMessage()
+  }, [])
 
   return (
     <div
@@ -14,7 +78,7 @@ const Notes: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         height: "100vh",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "var(--bg-color)",
         padding: "20px",
         boxSizing: "border-box",
       }}
@@ -31,22 +95,24 @@ const Notes: React.FC = () => {
         <button
           onClick={handleGoBack}
           style={{
-            backgroundColor: "#333",
-            color: "#fff",
+            backgroundColor: "transparent",
+            color: "var(--text-color)",
             border: "none",
-            padding: "10px 20px",
+            padding: "0px 20px 10px 20px",
             borderRadius: "5px",
-            fontSize: "16px",
+            fontSize: "24px",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          Go Back
+          <CircleArrowLeft size={45} />
         </button>
         <h1
           style={{
             fontSize: "48px",
             fontWeight: "bold",
-            color: "#333",
+            color: "var(--text-color)",
           }}
         >
           Notes
@@ -55,26 +121,42 @@ const Notes: React.FC = () => {
       </div>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          flex: 1,
         }}
       >
-        <p
-          style={{
-            fontSize: "18px",
-            color: "#666",
-            textAlign: "center",
-            maxWidth: "600px",
-          }}
-        >
-          Here you can find all your notes organized and easily accessible.
-        </p>
+        {isLoading ? (
+          <p>Loading message...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <>
+            <div
+              style={{
+                fontSize: "18px",
+                color: "var(--text-color)",
+                display: "block"
+              }}
+            >
+              <p>{message}</p>
+            </div>
+            <div style={{ display: "block"}}>
+              <p>Please enter a new note:</p>
+              <div>
+                <label htmlFor="title" style={{paddingRight: "5px"}}>Title</label>
+                <input type="text" name="title" onChange={onTitleChange} />
+              </div>
+              <br/>
+              <div>
+                <label htmlFor="content" style={{paddingRight: "5px"}}>Content</label>
+                <textarea name="content" onChange={onNotesChange}>
+                </textarea>
+              </div>
+            </div>
+            <button type="submit" value={notes} onClick={onClick} style={{ width: "100px", height: "30px"}}>Submit</button>
+          </>
+        )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Notes;
+export default Notes

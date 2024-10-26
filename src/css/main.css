@@ -1,8 +1,12 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body, header {
+html,
+body,
+header {
   margin: 0;
   padding: 0;
 }
@@ -16,7 +20,6 @@ html, body, header {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,4 +33,3 @@ html, body, header {
   width: 100%;
   padding: 0;
 }
-
