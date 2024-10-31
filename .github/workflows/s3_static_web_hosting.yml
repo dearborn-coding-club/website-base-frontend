@@ -4,7 +4,7 @@ on:
   push:
     branches:
     - feature/*
-    - slack_ci_cd
+    - Bryant/slack_ci_cd
 jobs:
   deploy:
     runs-on: ubuntu-latest
