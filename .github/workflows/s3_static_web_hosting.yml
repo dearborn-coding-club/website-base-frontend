@@ -28,7 +28,7 @@ jobs:
 
   notify-slack:
     runs-on: ubuntu-latest
-    needs: build  # Ensures this job runs after 'build' job is completed
+    needs: deploy  # Ensures this job runs after 'build' job is completed
     if: always()  # Ensures the Slack notification runs regardless of build success or failure
     
     steps:
