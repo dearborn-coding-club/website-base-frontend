@@ -10,6 +10,18 @@ export default function Navbar() {
   const [navRevealedState, setNavRevealedState] = useState(false)
   const { theme } = useTheme()
   const navigate = useNavigate()
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    alert("Login not implemented yet!")
+  }
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setUsername(event.target.value)
+  }
+  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value)
+  }
 
   return (
     <>
@@ -29,6 +41,27 @@ export default function Navbar() {
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 15 }}>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <button type="submit">Login</button>
+          </form>
           <ThemeToggle />
           <button
             title="Menu"
