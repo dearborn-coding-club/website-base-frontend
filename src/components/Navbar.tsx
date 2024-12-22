@@ -24,6 +24,8 @@ export default function Navbar() {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
+          localStorage.setItem("token", data.token)
+          localStorage.setItem("refresh_token", data.refresh_token)
           alert("Login successful")
           console.log("Login successful")
         } else {
