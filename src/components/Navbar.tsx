@@ -12,7 +12,28 @@ export default function Navbar() {
   const navigate = useNavigate()
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    alert("Login not implemented yet!")
+    console.log("Logging in...")
+    fetch("https://auth.dearborncodingclub.com/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify({ username, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token) {
+          alert("Login successful")
+          console.log("Login successful")
+        } else {
+          alert("Login failed")
+          console.log("Login failed")
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error)
+      })
   }
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
