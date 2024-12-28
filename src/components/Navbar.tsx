@@ -5,9 +5,11 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
 import { useTheme } from "../contexts/ThemeContext"
+import { useTokenProvider } from "../providers/TokenProvider"
 
 export default function Navbar() {
   const [navRevealedState, setNavRevealedState] = useState(false)
+  const { token, clearUserToken } = useTokenProvider()
   const { theme } = useTheme()
   const navigate = useNavigate()
 
@@ -75,6 +77,22 @@ export default function Navbar() {
         </div>
       </div>
       <div className={navRevealedState ? "Menu" : "Menu menu-hidden"}>
+        {
+          token?
+          <Link
+            to="/"
+            onClick={() => {
+              clearUserToken()
+              setNavRevealedState(false)
+            }
+          }>
+            Log out
+          </Link>
+          :
+          <Link to="/login" onClick={() => setNavRevealedState(false)}>
+            Login
+          </Link>
+        }
         <Link to="/" onClick={() => setNavRevealedState(false)}>
           Home
         </Link>
