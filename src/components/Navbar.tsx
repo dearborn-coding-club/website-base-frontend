@@ -12,41 +12,6 @@ export default function Navbar() {
   const { token, clearUserToken } = useTokenProvider()
   const { theme } = useTheme()
   const navigate = useNavigate()
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    console.log("Logging in...")
-    fetch("https://auth.dearborncodingclub.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ username, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem("token", data.token)
-          localStorage.setItem("refresh_token", data.refresh_token)
-          alert("Login successful")
-          console.log("Login successful")
-        } else {
-          alert("Login failed")
-          console.log("Login failed")
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error)
-      })
-  }
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setUsername(event.target.value)
-  }
-  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value)
-  }
 
   return (
     <>
@@ -66,27 +31,6 @@ export default function Navbar() {
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 15 }}>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={handleUsernameChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-            <button type="submit">Login</button>
-          </form>
           <ThemeToggle />
           <button
             title="Menu"
