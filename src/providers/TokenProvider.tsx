@@ -23,7 +23,6 @@ export const TokenProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
 
     useEffect(() => {
-        //Need jwt endpoint
         fetch("https://auth.dearborncodingclub.com"+"/validate-token", {
         method: "POST",
         headers: {
