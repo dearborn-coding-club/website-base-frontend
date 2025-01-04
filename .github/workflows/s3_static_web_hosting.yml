@@ -8,6 +8,8 @@ on:
     branches:
     - feature/*
     
+
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
