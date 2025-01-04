@@ -5,11 +5,11 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
 import { useTheme } from "../contexts/ThemeContext"
-import { useTokenProvider } from "../providers/TokenProvider"
+import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
 
 export default function Navbar() {
   const [navRevealedState, setNavRevealedState] = useState(false)
-  const { token, clearUserToken } = useTokenProvider()
+  const { token, logout } = useAuthServiceProvider()
   const { theme } = useTheme()
   const navigate = useNavigate()
 
@@ -17,10 +17,7 @@ export default function Navbar() {
     <>
       <div
         className="Navbar"
-        style={{
-          backgroundColor:
-            theme === "light" ? "var(--bg-color)" : "var(--bg-color)",
-        }}
+        style={{backgroundColor:theme === "light" ? "var(--bg-color)" : "var(--bg-color)"}}
       >
         <img
           className="navbar-logo"
@@ -39,9 +36,7 @@ export default function Navbar() {
           >
             <svg
               viewBox="0 0 40 40"
-              className={
-                navRevealedState ? "hamburger rotateViewBox" : "hamburger"
-              }
+              className={navRevealedState ? "hamburger rotateViewBox" : "hamburger"}
             >
               <rect
                 x="4"
@@ -82,11 +77,11 @@ export default function Navbar() {
           <Link
             to="/"
             onClick={() => {
-              clearUserToken()
+              logout()
               setNavRevealedState(false)
             }
           }>
-            Log out
+            Log Out
           </Link>
           :
           <Link to="/login" onClick={() => setNavRevealedState(false)}>
