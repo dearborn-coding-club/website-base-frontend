@@ -1,0 +1,43 @@
+.Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+}
+
+.login-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 250px;
+}
+
+input {
+    height: 40px;
+    border-radius: 10px;
+    border-color: var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding-left: 5px;
+}
+
+input:hover {
+    border-color: var(--primary-color);
+}
+
+::placeholder {
+    font-weight: bold;
+}
+
+input[type=submit] {
+   font-weight: bold;
+   border-style: solid;
+   border-color: var(--text-color);
+   cursor: pointer;
+}
+
+.errorMessage {
+    color: red;
+}

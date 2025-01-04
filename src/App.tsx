@@ -4,6 +4,8 @@ import Notes from "./pages/Notes"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import { Routes, Route } from "react-router-dom"
+import NotFound from "./pages/NotFound"
+import Login from "./pages/Login"
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/notes" element={<Notes />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<NotFound/>} />
         </Routes>
         <Footer />
       </div>

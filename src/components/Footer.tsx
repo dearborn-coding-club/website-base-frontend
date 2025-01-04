@@ -1,6 +1,7 @@
 import "../css/Footer.css"
 import fb from "../assets/fb.png"
 import x from "../assets/x.png"
+import ig from "../assets/ig.png"
 import linkedIn from "../assets/in.png"
 
 export default function Footer() {
@@ -21,6 +22,7 @@ export default function Footer() {
       <div className="footer-col">
         <span>Join Us On</span>
         <div className="social-wrapper">
+          <img src={ig} />
           <img src={fb} />
           <img src={x} />
           <img src={linkedIn} />

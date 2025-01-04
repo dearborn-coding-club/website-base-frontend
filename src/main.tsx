@@ -5,13 +5,16 @@ import "./css/main.css";
 import "./css/theme.css";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { TokenProvider } from "./providers/TokenProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <TokenProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </TokenProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
