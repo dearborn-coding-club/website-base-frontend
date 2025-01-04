@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import { Routes, Route } from "react-router-dom"
 import NotFound from "./pages/NotFound"
 import Login from "./pages/Login"
+import Loading from "./components/Loading"
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         </Routes>
         <Footer />
       </div>
+      <Loading/>
     </div>
   )
 }
