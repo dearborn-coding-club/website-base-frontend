@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
+import { useLoadingProvider } from './LoadingProvider';
 
 interface AuthServiceContextType {
     token: string | null;
@@ -9,6 +10,8 @@ interface AuthServiceContextType {
 const AuthServiceContext = createContext<AuthServiceContextType | null>(null)
 
 export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+
+    const { startLoading, stopLoading } = useLoadingProvider()
 
     const [token, setToken] = useState(localStorage.getItem("token"))
 
@@ -28,6 +31,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
         try {
 
+            startLoading()
             const res = await fetch("https://auth.dearborncodingclub.com" + "/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -49,11 +53,13 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
             loginSuccess = false
         }
 
+        stopLoading()
         return loginSuccess
         
     }
 
     useEffect(() => {
+        startLoading()
         fetch("https://auth.dearborncodingclub.com"+"/validate-token", {
         method: "POST",
         headers: {
@@ -65,8 +71,10 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
             if(res.status !== 200) {
                 throw new Error()
             }
+            stopLoading()
         })
         .catch(() => {
+            stopLoading()
             logout()
         })
     },[])
@@ -81,7 +89,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
 export const useAuthServiceProvider = () => {
     const context = useContext(AuthServiceContext)
     if (context == null) {
-        throw new Error("Error using TokenContext")
+        throw new Error("Error using AuthServiceContext")
     }
     return context
 }
