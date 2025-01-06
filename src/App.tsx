@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom"
 import NotFound from "./pages/NotFound"
 import Login from "./pages/Login"
 import Loading from "./components/Loading"
+import Toast from "./components/Toast"
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Footer />
       </div>
       <Loading/>
+      <Toast/>
     </div>
   )
 }
