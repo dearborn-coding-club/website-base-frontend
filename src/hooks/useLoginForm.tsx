@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
 import { useNavigate } from "react-router-dom";
+import { toastType, useToastProvider } from "../providers/ToastProvider";
 
 const useLoginForm = () => {
 
     const navigate = useNavigate();
 
     const { login, logout } = useAuthServiceProvider()
+
+    const { pushToast } = useToastProvider()
 
     const [errorMessage, setErrorMessage] = useState("")
 
@@ -19,6 +22,7 @@ const useLoginForm = () => {
         
         if(success) {
             navigate("/")
+            pushToast("Login Successful!", toastType.SUCCESS)
             return
         }
         

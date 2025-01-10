@@ -6,10 +6,12 @@ import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
 import { useTheme } from "../contexts/ThemeContext"
 import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
+import { toastType, useToastProvider } from "../providers/ToastProvider"
 
 export default function Navbar() {
   const [navRevealedState, setNavRevealedState] = useState(false)
   const { token, logout } = useAuthServiceProvider()
+  const { pushToast } = useToastProvider()
   const { theme } = useTheme()
   const navigate = useNavigate()
 
@@ -78,6 +80,7 @@ export default function Navbar() {
             to="/"
             onClick={() => {
               logout()
+              pushToast("User Logged Out!", toastType.WARNING)
               setNavRevealedState(false)
             }
           }>

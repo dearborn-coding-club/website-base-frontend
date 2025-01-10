@@ -7,16 +7,19 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthServiceProvider } from "./providers/AuthServiceProvider.tsx";
 import { LoadingProvider } from "./providers/LoadingProvider.tsx";
+import { ToastProvider } from "./providers/ToastProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
       <LoadingProvider>
-        <AuthServiceProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </AuthServiceProvider>
+        <ToastProvider>
+          <AuthServiceProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </AuthServiceProvider>
+        </ToastProvider>
       </LoadingProvider>
     </ThemeProvider>
   </React.StrictMode>
