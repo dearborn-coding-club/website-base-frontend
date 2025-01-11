@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import { Routes, Route } from "react-router-dom"
 import NotFound from "./pages/NotFound"
 import Login from "./pages/Login"
+import Register from "./pages/Register"
 import Loading from "./components/Loading"
 import Toast from "./components/Toast"
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/*" element={<NotFound/>} />
         </Routes>
         <Footer />

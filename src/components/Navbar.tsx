@@ -97,6 +97,9 @@ export default function Navbar() {
         <Link to="/notes" onClick={() => setNavRevealedState(false)}>
           Past Meeting Notes
         </Link>
+        <Link to="/register" onClick={() => setNavRevealedState(false)}>
+            Register
+        </Link>
       </div>
     </>
   )
