@@ -19,10 +19,7 @@ const registerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         }
         return res.json()
     })
-    .then(res => {
-        if (res.status !== 200) {
-            throw new Error();
-        }
+    .then(() => {
         alert("Successfully registered!")
     })
     .catch((e) => {
