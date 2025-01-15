@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./css/main.css";
 import "./css/theme.css";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { ThemeProvider } from "./providers/ThemeProvider.tsx";
 import { AuthServiceProvider } from "./providers/AuthServiceProvider.tsx";
 import { LoadingProvider } from "./providers/LoadingProvider.tsx";
 import { ToastProvider } from "./providers/ToastProvider.tsx";

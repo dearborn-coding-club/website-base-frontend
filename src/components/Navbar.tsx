@@ -4,7 +4,7 @@ import DCCLogoLight from "../assets/dcc_light.svg"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
-import { useTheme } from "../contexts/ThemeContext"
+import { useTheme } from "../providers/ThemeProvider"
 import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
 import { toastType, useToastProvider } from "../providers/ToastProvider"
 
