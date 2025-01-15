@@ -91,6 +91,9 @@ export default function Navbar() {
             Login
           </Link>
         }
+        <Link to="/profile" onClick={() => setNavRevealedState(false)}>
+          Profile
+        </Link>
         <Link to="/" onClick={() => setNavRevealedState(false)}>
           Home
         </Link>
@@ -98,7 +101,7 @@ export default function Navbar() {
           Past Meeting Notes
         </Link>
         <Link to="/register" onClick={() => setNavRevealedState(false)}>
-            Register
+          Register
         </Link>
       </div>
     </>
