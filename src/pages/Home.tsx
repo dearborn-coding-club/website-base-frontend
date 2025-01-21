@@ -3,7 +3,7 @@ import "../css/Home.css"
 import Card from "../components/Card"
 import DCCGathering from "../assets/dcc_gathering.webp"
 import MimiEye from "../assets/mimi_eye.gif"
-import DCCDesign from "../assets/dccdesign1.svg"
+import ProjectCarousel from "../components/ProjectCarousel"
 
 const Home: React.FC = () => {
   const imageTextStyle = {
@@ -152,21 +152,11 @@ const Home: React.FC = () => {
           }
         />
       </div>
-      <div className="row">
-        <Card
-          imageStyle={{
-            backgroundImage: `url(${DCCDesign})`,
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-            backgroundBlendMode: "darken",
-            height: "300px",
-          }}
-          imagetext={
-            <div className="image-text-style" style={{ color: "white" }}>
-              <p>Know our</p>
-              <p className="heighlight">Projects</p>
-            </div>
-          }
-        />
+      <div className="column" style={{backgroundColor: "#161e28"}}>
+        <div className="image-text-style" style={{ color: "white", cursor: "auto" }}>
+          <p>Know our <span className="heighlight">Projects</span></p>
+        </div>
+          <ProjectCarousel />
       </div>
     </div>
   )
