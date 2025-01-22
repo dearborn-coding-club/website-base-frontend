@@ -1,19 +1,9 @@
 import React from "react"
-import "../css/ProjectCarouselCard.css"
+import "../css/CarouselCardComplete.css"
 import githubLightIcon from "../assets/github-light.png"
+import { ProjectDetailsProp } from "./CarouselCard";
 
-export interface ProjectDetailsProp {
-    projectOwner: string
-    projectOwnerImageUrl: string
-    projectName: string
-    projectUrl: string
-    projectAbout?: string
-    projectLanguage?: string
-    projectStar: number
-    projectFork: number
-}
-
-const ProjectCarouselCard: React.FC<{projectDetails: ProjectDetailsProp}> = (prop) => {
+const CarouselCardComplete: React.FC<{projectDetails: ProjectDetailsProp}> = (prop) => {
 
     const {
         projectOwner,
@@ -27,7 +17,7 @@ const ProjectCarouselCard: React.FC<{projectDetails: ProjectDetailsProp}> = (pro
     } = prop.projectDetails;
 
     return (
-        <div className="ProjectCarouselCard">
+        <div className="CarouselCardComplete">
             <div className="card-top">
                 <img className="git-icon" src={githubLightIcon} alt="github-icon"/>
                 <p className="project-owner">{projectOwner}</p>
@@ -84,4 +74,4 @@ const ProjectCarouselCard: React.FC<{projectDetails: ProjectDetailsProp}> = (pro
     )
 }
 
-export default ProjectCarouselCard
+export default CarouselCardComplete
