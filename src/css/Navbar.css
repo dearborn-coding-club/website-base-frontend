@@ -1,6 +1,6 @@
 .Navbar {
   position: sticky;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   height: 100px;
   width: 100%;
@@ -42,6 +42,7 @@
 
 .Menu {
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;

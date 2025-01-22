@@ -9,6 +9,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Loading from "./components/Loading"
 import Toast from "./components/Toast"
+import Profile from "./pages/Profile"
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/notes" element={<Notes />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/*" element={<NotFound/>} />
         </Routes>
         <Footer />

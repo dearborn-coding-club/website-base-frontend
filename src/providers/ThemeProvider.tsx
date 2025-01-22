@@ -21,7 +21,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme
-    console.log({ savedTheme })
     if (savedTheme) {
       setTheme(savedTheme)
     }
