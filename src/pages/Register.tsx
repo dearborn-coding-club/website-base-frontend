@@ -1,9 +1,10 @@
 import React from "react"
 import "../css/Register.css"
-import { registerOnSubmit }   from "../hooks/registerOnSubmit"
+import useRegisterForm from "../hooks/useRegisterForm"
 
 const Register: React.FC = () => {
 
+    const { errorMessage, registerOnSubmit } = useRegisterForm()
 
     return(
         <div className="Register">
@@ -11,7 +12,8 @@ const Register: React.FC = () => {
                 <input className="" type="text" name="username" placeholder="Username"/>
                 <input className="" type="password" name="password" placeholder="Password"/>
                 <input className="" type="password" name="confirm-password" placeholder="Confirm Password"/>
-                <input className="" value="Register" type="submit"/>     
+                <input className="" value="Register" type="submit"/>
+                <label className="errorMessage">{errorMessage}</label>
             </form>
         </div>
     )
