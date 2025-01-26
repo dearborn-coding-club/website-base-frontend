@@ -9,7 +9,6 @@ const useProjectCarousel = (prop: ProjectCarouselProp = {}) => {
     const [projectList, setProjectList] = useState<ProjectDetailsProp[] | null[]>(Array(5).fill(null))
     const [isInfiniteScroll, setIsInfiniteScroll] = useState(false)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
     
     const carouselstyle = { "--carousel-card-width": `${carouselCardWidth}px`, "--gap": `${gap}px` } as React.CSSProperties
     const cardWrapperRef = useRef<HTMLDivElement>(null)
@@ -84,7 +83,6 @@ const useProjectCarousel = (prop: ProjectCarouselProp = {}) => {
 
     const handleWindowResize = () => {
        setWindowWidth(window.innerWidth)
-       setWindowHeight(window.innerHeight)
     }
 
     const onUnmount = () => {
@@ -201,7 +199,7 @@ const useProjectCarousel = (prop: ProjectCarouselProp = {}) => {
 
         setIsInfiniteScroll(false)
         return onUnmount
-    },[windowHeight, windowWidth])
+    },[windowWidth])
 
     return {
         projectList,
