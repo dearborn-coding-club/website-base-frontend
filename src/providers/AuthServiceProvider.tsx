@@ -11,6 +11,8 @@ const AuthServiceContext = createContext<AuthServiceContextType | null>(null)
 
 export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
+    const AUTH_SERVER_URL = import.meta.env.VITE_AUTH_SERVER_URL
+
     const { startLoading, stopLoading } = useLoadingProvider()
 
     const [token, setToken] = useState(localStorage.getItem("token"))
@@ -32,7 +34,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
         try {
 
             startLoading()
-            const res = await fetch("https://auth.dearborncodingclub.com" + "/login", {
+            const res = await fetch(AUTH_SERVER_URL + "/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({username: username, password: password})
@@ -60,7 +62,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     useEffect(() => {
         startLoading()
-        fetch("https://auth.dearborncodingclub.com"+"/validate-token", {
+        fetch(AUTH_SERVER_URL + "/validate-token", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

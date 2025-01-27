@@ -4,7 +4,10 @@ import { toastType, useToastProvider } from "../providers/ToastProvider"
 
 const useRegisterForm = () => {
 
+    const AUTH_SERVER_URL = import.meta.env.VITE_AUTH_SERVER_URL
+
     const { pushToast } = useToastProvider()
+    
     const [errorMessage, setErrorMessage] = useState("")
     
     const registerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,7 +23,7 @@ const useRegisterForm = () => {
             }, 3000);
             return;
         }
-        fetch("https://auth.dearborncodingclub.com" + "/register", {
+        fetch(AUTH_SERVER_URL + "/register", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({username: username, password: password})
