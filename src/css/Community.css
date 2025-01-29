@@ -1,0 +1,9 @@
+.Community {
+    padding: 50px;
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}

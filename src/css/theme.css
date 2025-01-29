@@ -2,16 +2,20 @@
   --bg-color: #f5f5f5;
   --text-color: #333;
   --card-bg-color: #fff;
+  --card-bg-color1: #444;
   --link-color: #1a73e8;
   --spinner-color: #333;
+  --spinner-color1: #f5c24f;
 }
 
 [data-theme="dark"] {
   --bg-color: #333;
   --text-color: #f5f5f5;
   --card-bg-color: #444;
+  --card-bg-color1: #c5c4c4;
   --link-color: #4da3ff;
   --spinner-color: #f5c24f;
+  --spinner-color1: #333;
 }
 
 body {
