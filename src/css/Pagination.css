@@ -1,0 +1,31 @@
+.Pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 5px;
+}
+
+.Pagination div {
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.Pagination div.active {
+    background-color: #f5c24f;
+    color: white;
+    border-radius: 5px;
+}
+  
+.Pagination div:hover:not(.active) {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.Pagination .entry-per-page {
+    width: 80px;
+    text-align: center;
+}

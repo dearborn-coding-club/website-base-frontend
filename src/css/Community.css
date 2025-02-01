@@ -1,14 +1,14 @@
 .Community {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 40px;
     justify-content: center;
     width: 100%;
     min-height: 400px;
     padding: 20px;
 }
 
-.card-wrapper {
+.Community .card-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
