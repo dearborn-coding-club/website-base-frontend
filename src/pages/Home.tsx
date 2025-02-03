@@ -3,7 +3,9 @@ import "../css/Home.css"
 import Card from "../components/Card"
 import DCCGathering from "../assets/dcc_gathering.webp"
 import MimiEye from "../assets/mimi_eye.gif"
+import CommunityImage from "../assets/community.jpg"
 import ProjectCarousel from "../components/ProjectCarousel"
+import { Link } from "react-router-dom"
 
 const Home: React.FC = () => {
   const imageTextStyle = {
@@ -143,12 +145,19 @@ const Home: React.FC = () => {
           }
         />
         <Card
-          imageStyle={{ height: "300px" }}
+          imageStyle={{
+            backgroundImage: `url(${CommunityImage})`,
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            backgroundBlendMode: "darken",
+            backgroundPosition: "0px 60%",
+            height: "300px",
+          }}
+          imageTextStyle={imageTextStyle}
           imagetext={
-            <div className="image-text-style">
-              <p>Enjoy</p>
-              <p className="heighlight">Yemeni Coffee</p>
-            </div>
+            <Link to={"/community"}>
+              <p>Meet the</p>
+              <p>Community</p>
+            </Link>
           }
         />
       </div>
