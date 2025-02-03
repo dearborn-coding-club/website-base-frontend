@@ -61,13 +61,13 @@ const useProjectCarousel = (prop: ProjectCarouselProp = {}) => {
         const leftPosition = listRef.current.getBoundingClientRect().x
         if(rightPosition<center) {
             cardWrapperRef.current.scrollTo({
-                left: cardWrapperRef.current.scrollLeft - ((carouselCardWidth+gap)*projectList.length),
+                left: cardWrapperRef.current.scrollLeft - listRef.current.clientWidth,
                 behavior: "instant"
             })
         }
         if(leftPosition>center) {
             cardWrapperRef.current.scrollTo({
-                left: cardWrapperRef.current.scrollLeft + ((carouselCardWidth+gap)*projectList.length),
+                left: cardWrapperRef.current.scrollLeft + listRef.current.clientWidth,
                 behavior: "instant"
             })
         }
