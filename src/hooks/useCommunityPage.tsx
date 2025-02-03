@@ -11,6 +11,7 @@ const useCommunityPage = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [entryPerPage, setEntryPerPage] =useState(12)
     const [totalPage, setTotalPage] = useState(1)
+    const offset = 3;
     
     useEffect(() => {
         setIsLoading(true)
@@ -26,7 +27,7 @@ const useCommunityPage = () => {
         .catch(() => setIsLoading(false))
     }, [currentPage, entryPerPage])
 
-    return {isLoading, memberList, currentPage, entryPerPage, totalPage, setCurrentPage, setEntryPerPage}
+    return {isLoading, memberList, currentPage, entryPerPage, totalPage, offset, setCurrentPage, setEntryPerPage}
 
 }
 

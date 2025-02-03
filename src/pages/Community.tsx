@@ -11,6 +11,7 @@ const Community: React.FC = () => {
         currentPage, 
         entryPerPage,
         totalPage, 
+        offset,
         setCurrentPage, 
         setEntryPerPage
     } = useCommunityPage()
@@ -33,6 +34,7 @@ const Community: React.FC = () => {
                     currentPage: currentPage,
                     entryPerPage: entryPerPage,
                     totalPage: totalPage,
+                    offset: offset,
                     setCurrentPage:setCurrentPage,
                     setEntryPerPage: setEntryPerPage,
                 }}/>

@@ -1,11 +1,17 @@
 .Pagination {
     display: flex;
+    flex-direction: row;
     width: 100%;
     justify-content: center;
+    align-items: center;
     gap: 5px;
 }
 
-.Pagination div {
+.entries {
+    display: flex;
+}
+
+.Pagination .entries div {
     padding: 8px 16px;
     text-decoration: none;
     cursor: pointer;
@@ -13,13 +19,13 @@
 }
 
 
-.Pagination div.active {
+.Pagination .entries div.active {
     background-color: #f5c24f;
     color: white;
     border-radius: 5px;
 }
   
-.Pagination div:hover:not(.active) {
+.Pagination .entries div:hover:not(.active) {
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -28,4 +34,10 @@
 .Pagination .entry-per-page {
     width: 80px;
     text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    .Pagination {
+        flex-direction: column;
+    }
 }
