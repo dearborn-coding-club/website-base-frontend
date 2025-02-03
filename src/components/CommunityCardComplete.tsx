@@ -1,7 +1,5 @@
 import "../css/CommunityCardComplete.css"
 import { CommunityCardProp } from "./CommunityCard"
-//import CoverImage from "../assets/dccdesign1.svg"
-//import DummyProfile from "../assets/dummy-profile.png"
 
 const CommunityCardComplete: React.FC<{communityCardProp: CommunityCardProp}> = (prop) => {
 
