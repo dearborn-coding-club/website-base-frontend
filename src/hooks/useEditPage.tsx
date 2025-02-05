@@ -168,7 +168,6 @@ const useEditPage = () => {
 
     const onSubmitSave = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("WOW")
     }
 
     useEffect(() => {
