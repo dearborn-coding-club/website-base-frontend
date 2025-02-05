@@ -1,8 +1,8 @@
 import "../css/FormCircleLoading.css"
 
-export type loadingState = "" | "loading" | "fail" | "success"
+export type LoadingState = "" | "loading" | "fail" | "success"
 
-const FormCircleLoading: React.FC<{result: loadingState}> = (prop) => {
+const FormCircleLoading: React.FC<{result: LoadingState}> = (prop) => {
     const result = prop.result
     return (
         <div className="FormCircleLoading">

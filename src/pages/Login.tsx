@@ -13,7 +13,7 @@ const Login: React.FC = () => {
                 <input type="text" name="username" placeholder="Username"/>
                 <input type="password" name="password" placeholder="Password"/>
                 <input value="Login" type="submit"/>
-                <label>Don't Have an account? <Link to={'/'}>Sign up!</Link></label>
+                <label>Don't Have an account? <Link to={'/register'}>Register!</Link></label>
                 <Link to={'/'}>Forgot password!</Link>
                 <label className="errorMessage">{errorMessage}</label>
             </form>
