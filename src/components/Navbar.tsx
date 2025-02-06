@@ -90,6 +90,9 @@ export default function Navbar() {
             <Link to="/profile" onClick={() => setNavRevealedState(false)}>
               Profile
             </Link>
+            <Link to="/editprofile" onClick={() => setNavRevealedState(false)}>
+              Edit Profile
+            </Link>
           </>
           :
           <>
