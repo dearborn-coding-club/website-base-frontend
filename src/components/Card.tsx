@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode } from "react"
 import "../css/Card.css"
 
-type propType = {
+interface propType {
   imageStyle?: CSSProperties
   imageTextStyle?: CSSProperties
   textStyle?: CSSProperties
@@ -9,13 +9,15 @@ type propType = {
   text?: ReactNode
 };
 
-export default function Card(prop: propType) {
+const Card: React.FC<propType> = ({imageStyle, imagetext, imageTextStyle, text, textStyle}: propType) => {
   return (
-    <div className="Card">
-      <div className="card-image" style={prop.imageStyle ?? {}}>
-        <span style={prop.imageTextStyle ?? {}}>{prop.imagetext}</span>
+    <div className="Card" role="base-card">
+      <div className="card-image" style={imageStyle ?? {}}>
+        <span style={imageTextStyle ?? {}}>{imagetext}</span>
       </div>
-      <div style={prop.textStyle ?? {}}>{prop.text}</div>
+      <div style={textStyle ?? {}}>{text}</div>
     </div>
   )
 }
+
+export default Card
