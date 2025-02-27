@@ -47,7 +47,7 @@ const Register: React.FC = () => {
                 </ul>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Register

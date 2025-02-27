@@ -53,15 +53,15 @@ input[type=submit] {
 
 /* Styling for valid items */
 .password-requirements .valid {
-    color: #00ff00; /* Green color for valid items */
+    color: var(--green-color); /* Green color for valid items */
 }
 
 /* Styling for invalid items */
 .password-requirements .invalid {
-    color: #ff0000; /* Red color for invalid items */
+    color: var(--red-color); /* Red color for invalid items */
 }
 
 
 .errorMessage {
-    color: red;
+    color: var(--red-color);
 }
