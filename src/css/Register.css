@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding-top: 30px;
     height: 400px;
 }
 
@@ -37,6 +38,29 @@ input[type=submit] {
    border-color: var(--text-color);
    cursor: pointer;
 }
+
+/* General styling for the requirements list */
+.password-requirements {
+    color: #ffffff; /* White text for dark background */
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.password-requirements ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Styling for valid items */
+.password-requirements .valid {
+    color: #00ff00; /* Green color for valid items */
+}
+
+/* Styling for invalid items */
+.password-requirements .invalid {
+    color: #ff0000; /* Red color for invalid items */
+}
+
 
 .errorMessage {
     color: red;
