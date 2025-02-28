@@ -1,6 +1,6 @@
 .Navbar {
   position: sticky;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   height: 100px;
   width: 100%;
@@ -42,7 +42,8 @@
 
 .Menu {
   position: fixed;
-  top: 0;
+  z-index: 2;
+  top: 100px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -77,6 +78,7 @@
 @media (min-width: 768px) {
   .Menu {
     position: fixed;
+    z-index: 2;
     top: 100px;
     left: auto;
     width: 200px;

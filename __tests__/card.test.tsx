@@ -1,10 +1,18 @@
-import renderer from 'react-test-renderer';
+import {render, screen} from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Card from '../src/components/Card'
 
-it('Renders the Card component successfully', () => {
-  const component = renderer.create(
+
+test('Renders the Card component successfully', () => {
+  // Arrange
+  const component = render(
     <Card />
   )
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+
+  // Act
+  // N/A
+
+  // Assert
+  expect(component).toBeTruthy();
+  expect(screen.getByRole('base-card')).toBeInTheDocument();
 })

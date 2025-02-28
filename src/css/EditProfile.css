@@ -1,0 +1,144 @@
+.Editprofile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Editprofile .wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.Editprofile .heading {
+    display: flex;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    color: var(--spinner-color);
+    border-bottom: 1px solid var(--spinner-color);
+}
+
+.Editprofile .edit-form {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    width: 100%;
+}
+
+.Editprofile .edit-form >div:not(.address-section) {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 50%;
+    flex-shrink: 0;
+}
+
+.Editprofile .edit-form >div:not(.address-section) >div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Editprofile .edit-form >div:not(.address-section) input {
+    width: calc(100% - 45px);
+}
+
+.Editprofile .edit-form >div:not(.address-section) >div >div {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.Editprofile .edit-form >div:not(.address-section) label {
+    font-weight: bold;
+}
+
+.Editprofile .edit-form .address-section {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    width: 100%;
+}
+
+.Editprofile .address-section >:nth-child(1) {
+    color: var(--spinner-color);
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.Editprofile .address-section >div{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 50%;
+    flex-shrink: 0;
+}
+
+.Editprofile .address-section >div >input {
+    width: calc(100% - 45px);
+}
+
+
+.Editprofile .address-section >div >label {
+    font-weight: bold;
+}
+
+.Editprofile .wrapper .edit-form .about-me {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 45px);
+    font-size: 16px;
+}
+
+.Editprofile .wrapper .edit-form .about-me textarea {
+    resize: vertical;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+.Editprofile .about-me textarea:hover {
+    border-color: var(--primary-color);
+}
+
+.Editprofile button {
+    cursor: pointer;
+    margin-top: 15px;
+    width: calc(100% - 45px);
+    height: 30px;
+    border-radius: 10px;
+    color: #000;
+    background-color: #f5c24f;
+    border: 1px solid #f5c24f;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Editprofile .error {
+    color: red;
+    width: calc(100% - 45px);
+}
+
+
+@media screen and (max-width: 768px) {
+    .Editprofile .edit-form {
+        flex-direction: column;
+    }
+
+    .Editprofile .address-section {
+        flex-direction: column;
+    }
+    
+    .Editprofile .edit-form >div:not(.address-section) {
+        width: 100%;
+    }
+
+    .Editprofile .address-section >div{
+        width: 100%;
+    }
+}

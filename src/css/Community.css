@@ -1,0 +1,19 @@
+.Community {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+    min-height: 400px;
+    padding: 20px;
+}
+
+.Community .card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    height: fit-content;
+    padding: 10px 0px 10px 0px;
+}

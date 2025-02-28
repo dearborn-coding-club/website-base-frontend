@@ -1,0 +1,43 @@
+.Pagination {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.entries {
+    display: flex;
+}
+
+.Pagination .entries div {
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.Pagination .entries div.active {
+    background-color: #f5c24f;
+    color: white;
+    border-radius: 5px;
+}
+  
+.Pagination .entries div:hover:not(.active) {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.Pagination .entry-per-page {
+    width: 80px;
+    text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    .Pagination {
+        flex-direction: column;
+    }
+}

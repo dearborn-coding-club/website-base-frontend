@@ -76,20 +76,35 @@ export default function Navbar() {
       <div className={navRevealedState ? "Menu" : "Menu menu-hidden"}>
         {
           token?
-          <Link
-            to="/"
-            onClick={() => {
-              logout()
-              pushToast("User Logged Out!", toastType.WARNING)
-              setNavRevealedState(false)
-            }
-          }>
-            Log Out
-          </Link>
+          <>
+            <Link
+              to="/"
+              onClick={() => {
+                logout()
+                pushToast("User Logged Out!", toastType.WARNING)
+                setNavRevealedState(false)
+              }
+            }>
+              Log Out
+            </Link>
+            <Link to="/profile" onClick={() => setNavRevealedState(false)}>
+              Profile
+            </Link>
+            <Link to="/editprofile" onClick={() => setNavRevealedState(false)}>
+              Edit Profile
+            </Link>
+          </>
           :
-          <Link to="/login" onClick={() => setNavRevealedState(false)}>
-            Login
-          </Link>
+          <>
+            <span style={{padding: "10px"}}>
+              <Link style={{borderRight: "1px solid var(--text-color)"}} to="/register" onClick={() => setNavRevealedState(false)}>
+                Register
+              </Link>
+              <Link to="/login" onClick={() => setNavRevealedState(false)}>
+                Login
+              </Link>
+            </span>
+          </>
         }
         <Link to="/" onClick={() => setNavRevealedState(false)}>
           Home
@@ -97,9 +112,7 @@ export default function Navbar() {
         <Link to="/notes" onClick={() => setNavRevealedState(false)}>
           Past Meeting Notes
         </Link>
-        <Link to="/register" onClick={() => setNavRevealedState(false)}>
-            Register
-        </Link>
+
       </div>
     </>
   )

@@ -1,0 +1,205 @@
+.Profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 50px 20px 50px;
+}
+
+.basic-info-wrapper {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--card-bg-color);
+    text-align: start;
+}
+
+.profile-picture {
+    max-height: 200px;
+    max-width: 200px;
+    border-radius: 10px;
+}
+
+.info-skills-wrapper {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.user-title {
+    font-style: italic;
+}
+
+.contact-info {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    white-space: collapse;
+}
+
+.phone::before {
+    content: "📞";
+}
+
+.email::before {
+    content: "📧";
+}
+
+.address::before {
+    content: "🏠";
+}
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+}
+
+.about-me .title {
+    display: flex;
+    align-items: end;
+    font-weight: bold;
+}
+
+.about-me .title::after {
+    content: "";
+    flex: 1 1 auto;
+    border-bottom: solid 1px var(--text-color);
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 5px 10px 5px 10px;
+    border-left: 1px solid var(--text-color);
+}
+
+.skills .title {
+    padding: 0px 5px 0px 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 1px solid var(--spinner-color);
+    color: var(--text-color);
+}
+
+.skills ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.leetcode-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    background-color: var(--card-bg-color);
+    text-align: start;
+}
+
+.leetcode-wrapper .title {
+    width: 100%;
+    border-bottom: 1px solid var(--text-color);
+    font-weight: bold;
+}
+
+.leetcode-username {
+    color: var(--spinner-color);
+}
+
+.stats-card-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-set {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+}
+
+.stat-card {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center; 
+    padding: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat :nth-child(2) {
+    font-weight: bold;
+    font-size: 22px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+@media screen and (max-width: 1400px) {
+    .contact-info {
+        flex-direction: column;
+        gap: 0px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .basic-info-wrapper {
+        flex-direction: column;
+    }
+
+    .info-skills-wrapper {
+        border-top: solid 1px var(--text-color);
+    }
+
+    .stats-card-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .info-skills-wrapper {
+        flex-direction: column;
+    }
+
+    .skills {
+        width: 100%;
+        padding: 0px;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .Profile {
+        padding: 20px 10px 20px 10px;
+    }
+
+    .contact-info {
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .stat-set {
+        flex-direction: column;
+    }
+}
