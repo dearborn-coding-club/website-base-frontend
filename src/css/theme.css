@@ -6,6 +6,8 @@
   --link-color: #1a73e8;
   --spinner-color: #333;
   --spinner-color1: #f5c24f;
+  --green-color: #4caf50;
+  --red-color: #e57373;
 }
 
 [data-theme="dark"] {
@@ -16,6 +18,8 @@
   --link-color: #4da3ff;
   --spinner-color: #f5c24f;
   --spinner-color1: #333;
+  --green-color: #4caf50;
+  --red-color: #e57373;
 }
 
 body {
