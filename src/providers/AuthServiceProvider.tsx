@@ -62,23 +62,28 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     useEffect(() => {
         startLoading()
-        fetch(AUTH_SERVER_URL + "/validate-token", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `bearer ${token}`
-        }
-        })
-        .then(res => {
-            if(res.status !== 200) {
-                throw new Error()
+        if(token == null) {
+            fetch(AUTH_SERVER_URL + "/validate-token", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `bearer ${token}`
             }
-            stopLoading()
-        })
-        .catch(() => {
+            })
+            .then(res => {
+                if(res.status !== 200) {
+                    throw new Error()
+                }
+                stopLoading()
+            })
+            .catch(() => {
+                stopLoading()
+                logout()
+            })
+        } else {
             stopLoading()
             logout()
-        })
+        }
     },[])
 
     return (
