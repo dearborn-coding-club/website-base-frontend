@@ -67,7 +67,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `bearer ${token}`
+                "Authorization": `Bearer ${token}`
             }
             })
             .then(res => {

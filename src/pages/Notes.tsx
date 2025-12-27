@@ -36,7 +36,7 @@ const Notes: React.FC = () => {
         body: JSON.stringify({title: title, content: notes}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
-          "Authorization": `bearer ${token || ""}`,
+          "Authorization": `Bearer ${token || ""}`,
         }
       }
     )
@@ -61,7 +61,7 @@ const Notes: React.FC = () => {
             method: "GET",
             headers: {
               "Content-type": "application/json; charset=UTF-8",
-              "Authorization": `bearer ${token || ""}`,
+              "Authorization": `Bearer ${token || ""}`,
             },
           }
         )
