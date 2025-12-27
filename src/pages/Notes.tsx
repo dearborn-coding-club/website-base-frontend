@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "../css/theme.css"
 import { CircleArrowLeft } from "lucide-react"
+import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
 
 interface ServerResponse {
   message: string
@@ -14,6 +15,7 @@ const Notes: React.FC = () => {
   const [message, setMessage] = useState<string>("")
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const { token } = useAuthServiceProvider()
 
   const handleGoBack = (): void => {
     navigate("/")
@@ -33,7 +35,8 @@ const Notes: React.FC = () => {
         method: "POST",
         body: JSON.stringify({title: title, content: notes}),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+          "Content-type": "application/json; charset=UTF-8",
+          "Authorization": `bearer ${token || ""}`,
         }
       }
     )
@@ -54,7 +57,13 @@ const Notes: React.FC = () => {
     const fetchMessage = async (): Promise<void> => {
       try {
         const response = await fetch(
-          "https://api.dearborncodingclub.com/notes/"
+          "https://api.dearborncodingclub.com/notes/", {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              "Authorization": `bearer ${token || ""}`,
+            },
+          }
         )
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
