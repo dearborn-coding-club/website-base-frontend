@@ -57,7 +57,7 @@ const Notes: React.FC = () => {
     const fetchMessage = async (): Promise<void> => {
       try {
         const response = await fetch(
-          "https://api.dearborncodingclub.com/notes/", {
+          "https://api.dearborncodingclub.com/v2/notes/", {
             method: "GET",
             headers: {
               "Content-type": "application/json; charset=UTF-8",
@@ -68,8 +68,8 @@ const Notes: React.FC = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        const data: ServerResponse = await response.json()
-        setMessage(data.message)
+        const data = JSON.stringify(await response.json())
+        setMessage(data)
       } catch (e) {
         setError(e instanceof Error ? e.message : "An unknown error occurred")
         console.error("Error fetching message:", e)
