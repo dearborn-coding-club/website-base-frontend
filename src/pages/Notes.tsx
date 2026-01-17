@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import "../css/theme.css"
 import { CircleArrowLeft } from "lucide-react"
 import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
+import { API_BASE_URL } from "../config/api"
 
 interface ServerResponse {
   message: string
@@ -31,7 +32,7 @@ const Notes: React.FC = () => {
   const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const response = await fetch("https://api.dearborncodingclub.com/v2/notes/", {
+    const response = await fetch(`${API_BASE_URL}/v2/notes/`, {
         method: "POST",
         body: JSON.stringify({title: title, content: notes}),
         headers: {
@@ -57,7 +58,7 @@ const Notes: React.FC = () => {
     const fetchMessage = async (): Promise<void> => {
       try {
         const response = await fetch(
-          "https://api.dearborncodingclub.com/v2/notes/", {
+          `${API_BASE_URL}/v2/notes/`, {
             method: "GET",
             headers: {
               "Content-type": "application/json; charset=UTF-8",

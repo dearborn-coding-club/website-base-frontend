@@ -2,12 +2,13 @@ import "../css/Profile.css"
 import DummyProfilePicture from "../assets/dummy-profile.png"
 import CircularProgressBar from "../components/CircularProgressBar"
 import React, { useEffect } from "react"
+import { API_BASE_URL } from "../config/api"
 
 const Profile: React.FC = () => {
 
     useEffect(() => {
         const fetchProfileData = async () => {
-            const response = await fetch("https://api.dearborncodingclub.com/profile")
+            const response = await fetch(`${API_BASE_URL}/profile`)
             const data = await response.json()
             console.log(data)
         };

@@ -5,14 +5,15 @@ Dearborn Coding Club Frontend is a dynamic, React-based website for the [Dearbor
 
 ## Table of Contents
 1. [Architecture](#architecture)
-2. [Running](#running)
+2. [Environment Configuration](#environment-configuration)
+3. [Running](#running)
     * [Running locally](#running-locally)
     * [Running from Docker Container](#running-from-the-gostatic-docker-container-locally)
-3. [Building](#building-locally)
-4. [Deploying](#deploying)
+4. [Building](#building-locally)
+5. [Deploying](#deploying)
     * [Deploying to Fly.io](#deploying-to-flyio)
     * [Deploying to Staging](#deploying-to-staging)
-5. [(Re)generating TLS Certificates](#regenerating-tls-certificates)
+6. [(Re)generating TLS Certificates](#regenerating-tls-certificates)
 
 ## Architecture
 ---
@@ -43,11 +44,40 @@ sequenceDiagram
     end
 ```
 
+## Environment Configuration
+---
+
+The frontend uses environment variables to configure API endpoints for different environments. Create a `.env` file in the root directory with the following variables:
+
+### Local Development
+
+For local development, create a `.env` file with:
+
+```bash
+VITE_API_BASE_URL=http://localhost:8000
+VITE_AUTH_SERVER_URL=http://localhost:8080
+```
+
+These are the default values used if the environment variables are not set, so you can run the app locally without a `.env` file.
+
+### Production
+
+For production builds, set these environment variables:
+
+```bash
+VITE_API_BASE_URL=https://api.dearborncodingclub.com
+VITE_AUTH_SERVER_URL=https://auth.dearborncodingclub.com
+```
+
+> [!NOTE]
+> Environment variables prefixed with `VITE_` are exposed to the client-side code. Make sure these only contain public API endpoints, not sensitive credentials.
+
 ## Running
 ---
 
 ### Running locally
 - Run `npm install`
+- (Optional) Create a `.env` file with your local configuration (see [Environment Configuration](#environment-configuration))
 - Run `npm run dev`
 
 ### Running from the goStatic docker container locally
@@ -60,6 +90,9 @@ sequenceDiagram
 ---
 
 - Run `npm run build`
+
+> [!NOTE]
+> When building for production, ensure the environment variables `VITE_API_BASE_URL` and `VITE_AUTH_SERVER_URL` are set to production values. These are embedded at build time.
 
 ## Deploying
 ---
