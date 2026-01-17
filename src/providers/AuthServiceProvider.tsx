@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import { useLoadingProvider } from './LoadingProvider';
+import { AUTH_SERVER_URL } from '../config/api';
 
 interface AuthServiceContextType {
     token: string | null;
@@ -10,8 +11,6 @@ interface AuthServiceContextType {
 const AuthServiceContext = createContext<AuthServiceContextType | null>(null)
 
 export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-
-    const AUTH_SERVER_URL = import.meta.env.VITE_AUTH_SERVER_URL
 
     const { startLoading, stopLoading } = useLoadingProvider()
 

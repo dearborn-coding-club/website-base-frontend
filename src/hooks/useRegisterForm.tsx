@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { toastType, useToastProvider } from "../providers/ToastProvider"
+import { AUTH_SERVER_URL } from "../config/api"
 
 const useRegisterForm = () => {
-    const AUTH_SERVER_URL = import.meta.env.VITE_AUTH_SERVER_URL;
     const { pushToast } = useToastProvider();
 
     const [errorMessage, setErrorMessage] = useState("");
