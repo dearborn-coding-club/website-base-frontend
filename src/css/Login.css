@@ -1,43 +1,64 @@
-.Login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 400px;
+/* Shared layout for the Login and Register pages. */
+
+.auth-page {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(40px, 8vw, 96px) var(--gutter) clamp(56px, 8vw, 96px);
+  text-align: left;
 }
 
-.login-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 250px;
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: clamp(28px, 4vw, 40px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
 }
 
-input {
-    height: 40px;
-    border-radius: 10px;
-    border-color: var(--text-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding-left: 5px;
+.auth-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-input:hover {
-    border-color: var(--primary-color);
+.auth-head h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
 }
 
-::placeholder {
-    font-weight: bold;
+.auth-head p {
+  color: var(--ink-2);
 }
 
-input[type=submit] {
-   font-weight: bold;
-   border-style: solid;
-   border-color: var(--text-color);
-   cursor: pointer;
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.errorMessage {
-    color: red;
+.auth-error {
+  margin: 0;
+  min-height: 0;
+}
+
+.auth-error:empty {
+  display: none;
+}
+
+.auth-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+  color: var(--ink-2);
 }

@@ -1,144 +1,55 @@
 .Editprofile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  text-align: left;
 }
 
-.Editprofile .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 760px;
 }
 
-.Editprofile .heading {
-    display: flex;
-    width: 100%;
-    font-size: 24px;
-    font-weight: bolder;
-    margin-bottom: 20px;
-    color: var(--spinner-color);
-    border-bottom: 1px solid var(--spinner-color);
+.form-section {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
 }
 
-.Editprofile .edit-form {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 5px;
-    width: 100%;
+.form-section legend {
+  grid-column: 1 / -1;
+  padding: 0;
+  margin-bottom: 4px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
-.Editprofile .edit-form >div:not(.address-section) {
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    width: 50%;
-    flex-shrink: 0;
+.field-full {
+  grid-column: 1 / -1;
 }
 
-.Editprofile .edit-form >div:not(.address-section) >div {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.Editprofile .edit-form >div:not(.address-section) input {
-    width: calc(100% - 45px);
+.field-row .input {
+  flex: 1;
 }
 
-.Editprofile .edit-form >div:not(.address-section) >div >div {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
+.form-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 
-.Editprofile .edit-form >div:not(.address-section) label {
-    font-weight: bold;
-}
-
-.Editprofile .edit-form .address-section {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 5px;
-    width: 100%;
-}
-
-.Editprofile .address-section >:nth-child(1) {
-    color: var(--spinner-color);
-    font-size: 18px;
-    font-weight: bold;
-    width: 100%;
-}
-
-.Editprofile .address-section >div{
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    width: 50%;
-    flex-shrink: 0;
-}
-
-.Editprofile .address-section >div >input {
-    width: calc(100% - 45px);
-}
-
-
-.Editprofile .address-section >div >label {
-    font-weight: bold;
-}
-
-.Editprofile .wrapper .edit-form .about-me {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 45px);
-    font-size: 16px;
-}
-
-.Editprofile .wrapper .edit-form .about-me textarea {
-    resize: vertical;
-    border-radius: 10px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--text-color);
-}
-
-.Editprofile .about-me textarea:hover {
-    border-color: var(--primary-color);
-}
-
-.Editprofile button {
-    cursor: pointer;
-    margin-top: 15px;
-    width: calc(100% - 45px);
-    height: 30px;
-    border-radius: 10px;
-    color: #000;
-    background-color: #f5c24f;
-    border: 1px solid #f5c24f;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.Editprofile .error {
-    color: red;
-    width: calc(100% - 45px);
-}
-
-
-@media screen and (max-width: 768px) {
-    .Editprofile .edit-form {
-        flex-direction: column;
-    }
-
-    .Editprofile .address-section {
-        flex-direction: column;
-    }
-    
-    .Editprofile .edit-form >div:not(.address-section) {
-        width: 100%;
-    }
-
-    .Editprofile .address-section >div{
-        width: 100%;
-    }
+@media (max-width: 640px) {
+  .form-section {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,19 +1,23 @@
 .Community {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    justify-content: center;
-    width: 100%;
-    min-height: 400px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
 }
 
-.Community .card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
-    width: 100%;
-    height: fit-content;
-    padding: 10px 0px 10px 0px;
+.Community .page-head {
+  margin-bottom: 0;
+}
+
+.Community .member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.community-empty {
+  color: var(--ink-2);
+  text-align: center;
+  padding: 40px 0;
 }

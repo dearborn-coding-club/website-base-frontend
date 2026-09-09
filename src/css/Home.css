@@ -1,27 +1,236 @@
 .Home {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+/* ---------- Hero ---------- */
+
+.hero {
+  width: 100%;
 }
 
-.image-text-style {
-    font-size: 36px;
-    font-weight: bold;
-    cursor: pointer;
+.hero-inner {
+  max-width: var(--content);
+  margin-inline: auto;
+  padding: clamp(48px, 7vw, 96px) var(--gutter) clamp(48px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
 }
 
-.heighlight {
-    color: #f5c24f;
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-@media (max-width:600px)  { 
-    .row {
-        flex-direction: column;
-    }
+.hero-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(0.35em);
+  animation: hero-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.hero-line:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.hero-line:nth-child(3) {
+  animation-delay: 0.24s;
+  color: var(--accent-text);
+}
+
+.hero-lede {
+  animation: hero-fade 0.6s ease 0.4s both;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  animation: hero-fade 0.6s ease 0.5s both;
+}
+
+@keyframes hero-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-photo {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: hero-fade 0.8s ease 0.3s both;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 45% 50%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.hero-photo figcaption {
+  font-size: 0.875rem;
+  color: var(--ink-3);
+}
+
+/* ---------- Where strip ---------- */
+
+.where {
+  width: 100%;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.where-inner {
+  max-width: var(--content);
+  margin-inline: auto;
+  padding: 22px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.where-place {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.where-place svg {
+  flex-shrink: 0;
+}
+
+.where-place div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.where-place strong {
+  font-weight: 700;
+}
+
+.where-place span {
+  font-size: 0.95rem;
+}
+
+.where-note {
+  flex: 1;
+  font-size: 0.95rem;
+  max-width: 34em;
+  padding-left: 32px;
+  border-left: 1px solid rgba(28, 24, 20, 0.25);
+}
+
+.where .btn-dark {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ---------- What happens ---------- */
+
+.what-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.what-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.what-item svg {
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.what-item p {
+  color: var(--ink-2);
+}
+
+/* ---------- Projects ---------- */
+
+.projects {
+  background: var(--bg-sunk);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+/* ---------- Community band ---------- */
+
+.community-band {
+  padding-bottom: clamp(56px, 8vw, 104px);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .where-inner {
+    flex-wrap: wrap;
+    gap: 16px 32px;
+  }
+
+  .where-note {
+    flex-basis: 100%;
+    order: 3;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .where .btn-dark {
+    margin-left: auto;
+  }
+
+  .what-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .where .btn-dark {
+    margin-left: 0;
+  }
 }

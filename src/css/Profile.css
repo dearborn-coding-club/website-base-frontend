@@ -1,205 +1,188 @@
 .Profile {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    padding: 20px 50px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: left;
 }
 
-.basic-info-wrapper {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: var(--card-bg-color);
-    text-align: start;
+.profile-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
 }
 
 .profile-picture {
-    max-height: 200px;
-    max-width: 200px;
-    border-radius: 10px;
+  width: 132px;
+  height: 132px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  background: var(--bg-sunk);
+  border: 1px solid var(--line);
 }
 
-.info-skills-wrapper {
-    display: flex;
+.profile-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    width: 100%;
+.profile-name {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
 }
 
-.name {
-    font-size: 22px;
-    font-weight: bold;
+.profile-role {
+  color: var(--ink-2);
+  font-size: 1.05rem;
 }
 
-.user-title {
-    font-style: italic;
+.profile-contact {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--ink-2);
 }
 
-.contact-info {
-    display: flex;
-    gap: 30px;
-    font-size: 14px;
-    white-space: collapse;
+.profile-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  overflow-wrap: anywhere;
 }
 
-.phone::before {
-    content: "📞";
+.profile-contact svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--accent);
 }
 
-.email::before {
-    content: "📧";
+.profile-edit {
+  align-self: start;
 }
 
-.address::before {
-    content: "🏠";
+.profile-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
 }
 
-.about-me {
-    display: flex;
-    flex-direction: column;
-    font-size: small;
+.profile-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
 }
 
-.about-me .title {
-    display: flex;
-    align-items: end;
-    font-weight: bold;
+.profile-block h2 {
+  font-size: 1.25rem;
 }
 
-.about-me .title::after {
-    content: "";
-    flex: 1 1 auto;
-    border-bottom: solid 1px var(--text-color);
+.profile-about p {
+  color: var(--ink-2);
 }
 
-.skills {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    padding: 5px 10px 5px 10px;
-    border-left: 1px solid var(--text-color);
+.profile-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.skills .title {
-    padding: 0px 5px 0px 5px;
-    border-radius: 10px;
-    font-size: 18px;
-    border: 1px solid var(--spinner-color);
-    color: var(--text-color);
+.profile-leetcode {
+  grid-column: 1 / -1;
 }
 
-.skills ul {
-    margin-top: 10px;
-    padding-left: 20px;
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.leetcode-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px 20px 10px 20px;
-    background-color: var(--card-bg-color);
-    text-align: start;
+.skill-list li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-.leetcode-wrapper .title {
-    width: 100%;
-    border-bottom: 1px solid var(--text-color);
-    font-weight: bold;
-}
-
-.leetcode-username {
-    color: var(--spinner-color);
-}
-
-.stats-card-wrapper {
-    display: flex;
-    gap: 20px;
-}
-
-.stat-set {
-    display: flex;
-    flex: 1;
-    gap: 20px;
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .stat-card {
-    display: flex;
-    flex: 1;
-    justify-content: space-evenly;
-    align-items: center; 
-    padding: 10px;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunk);
 }
 
 .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
-.stat :nth-child(2) {
-    font-weight: bold;
-    font-size: 22px;
-    border-bottom: 1px solid var(--text-color);
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-@media screen and (max-width: 1400px) {
-    .contact-info {
-        flex-direction: column;
-        gap: 0px;
-    }
+.stat-solved {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2px;
 }
 
-@media screen and (max-width: 992px) {
-    .basic-info-wrapper {
-        flex-direction: column;
-    }
-
-    .info-skills-wrapper {
-        border-top: solid 1px var(--text-color);
-    }
-
-    .stats-card-wrapper {
-        flex-direction: column;
-    }
+.stat-total {
+  font-size: 0.8rem;
+  color: var(--ink-3);
 }
 
-@media screen and (max-width: 768px) {
-    .info-skills-wrapper {
-        flex-direction: column;
-    }
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .skills {
-        width: 100%;
-        padding: 0px;
-        border: none;
-    }
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media screen and (max-width: 576px) {
-    .Profile {
-        padding: 20px 10px 20px 10px;
-    }
+@media (max-width: 640px) {
+  .profile-header {
+    grid-template-columns: 1fr;
+  }
 
-    .contact-info {
-        word-wrap: break-word;
-    }
+  .profile-picture {
+    width: 104px;
+    height: 104px;
+  }
+
+  .profile-block {
+    padding: 20px;
+  }
 }
 
-@media screen and (max-width: 400px) {
-    .stat-set {
-        flex-direction: column;
-    }
+@media (max-width: 420px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
 }
