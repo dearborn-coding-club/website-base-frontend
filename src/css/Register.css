@@ -1,67 +1,27 @@
-.Register {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-top: 30px;
-    height: 400px;
-}
-
-.register-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 250px;
-}
-
-input {
-    height: 40px;
-    border-radius: 10px;
-    border-color: var(--text-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding-left: 5px;
-}
-
-input:hover {
-    border-color: var(--primary-color);
-}
-
-::placeholder {
-    font-weight: bold;
-}
-
-input[type=submit] {
-   font-weight: bold;
-   border-style: solid;
-   border-color: var(--text-color);
-   cursor: pointer;
-}
-
-/* General styling for the requirements list */
 .password-requirements {
-    color: #ffffff; /* White text for dark background */
-    font-size: 14px;
-    margin-top: 20px;
+  list-style: none;
+  margin: -6px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunk);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.875rem;
 }
 
-.password-requirements ul {
-    list-style-type: disc;
-    padding-left: 20px;
+.password-requirements li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-2);
+  transition: color 0.15s ease;
 }
 
-/* Styling for valid items */
-.password-requirements .valid {
-    color: var(--green-color); /* Green color for valid items */
+.password-requirements li.valid {
+  color: var(--ok);
 }
 
-/* Styling for invalid items */
-.password-requirements .invalid {
-    color: var(--red-color); /* Red color for invalid items */
-}
-
-
-.errorMessage {
-    color: var(--red-color);
+.password-requirements li.invalid svg {
+  color: var(--ink-3);
 }

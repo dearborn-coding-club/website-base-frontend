@@ -17,21 +17,21 @@ export default function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="app-body">
+      <main className="app-body">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/community" element={<Community />} />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/*" element={<NotFound/>} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
-        <Footer />
-      </div>
-      <Loading/>
-      <Toast/>
+      </main>
+      <Footer />
+      <Loading />
+      <Toast />
     </div>
   )
 }

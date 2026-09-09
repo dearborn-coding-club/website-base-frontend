@@ -1,168 +1,186 @@
 import React, { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import "../css/theme.css"
-import { CircleArrowLeft } from "lucide-react"
+import { Link } from "react-router-dom"
+import "../css/Notes.css"
+import { ArrowLeft } from "lucide-react"
 import { useAuthServiceProvider } from "../providers/AuthServiceProvider"
+import { toastType, useToastProvider } from "../providers/ToastProvider"
 
-interface ServerResponse {
-  message: string
+const NOTES_URL = "https://api.dearborncodingclub.com/v2/notes/"
+
+interface Note {
+  title?: string
+  content?: string
+  [key: string]: unknown
 }
 
+const isNoteList = (data: unknown): data is Note[] =>
+  Array.isArray(data) &&
+  data.every(
+    (n) =>
+      typeof n === "object" &&
+      n !== null &&
+      ("title" in n || "content" in n)
+  )
+
 const Notes: React.FC = () => {
-  const navigate = useNavigate()
   const [title, setTitle] = useState<string>("")
   const [notes, setNotes] = useState<string>("")
-  const [message, setMessage] = useState<string>("")
+  const [data, setData] = useState<unknown>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isSaving, setIsSaving] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const { token } = useAuthServiceProvider()
+  const { pushToast } = useToastProvider()
 
-  const handleGoBack = (): void => {
-    navigate("/")
+  const authHeaders = {
+    "Content-type": "application/json; charset=UTF-8",
+    Authorization: `Bearer ${token || ""}`,
   }
 
-  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value)
-  }
-  const onNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNotes(e.target.value)
-  }
-
-  const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    const response = await fetch("https://api.dearborncodingclub.com/v2/notes/", {
-        method: "POST",
-        body: JSON.stringify({title: title, content: notes}),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "Authorization": `Bearer ${token || ""}`,
-        }
+  const fetchNotes = async (): Promise<void> => {
+    try {
+      const response = await fetch(NOTES_URL, {
+        method: "GET",
+        headers: authHeaders,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-    )
-
-    if (!response.ok) {
-      console.log("failure!")
-      throw new Error(`HTTP error! status: ${response.status}`)
-    } else {
-      console.log("success!")
+      setData(await response.json())
+      setError(null)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "An unknown error occurred")
+      console.error("Error fetching notes:", e)
+    } finally {
+      setIsLoading(false)
     }
+  }
 
-    const data: ServerResponse = await response.json()
-    console.log(data);
-    
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSaving(true)
+    try {
+      const response = await fetch(NOTES_URL, {
+        method: "POST",
+        body: JSON.stringify({ title: title, content: notes }),
+        headers: authHeaders,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      pushToast("Note posted", toastType.SUCCESS)
+      setTitle("")
+      setNotes("")
+      await fetchNotes()
+    } catch (err) {
+      console.error("Error posting note:", err)
+      pushToast("Couldn't post the note. Are you logged in?", toastType.ERROR)
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   useEffect(() => {
-    const fetchMessage = async (): Promise<void> => {
-      try {
-        const response = await fetch(
-          "https://api.dearborncodingclub.com/v2/notes/", {
-            method: "GET",
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              "Authorization": `Bearer ${token || ""}`,
-            },
-          }
-        )
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = JSON.stringify(await response.json())
-        setMessage(data)
-      } catch (e) {
-        setError(e instanceof Error ? e.message : "An unknown error occurred")
-        console.error("Error fetching message:", e)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchMessage()
+    fetchNotes()
   }, [])
 
+  const renderNotes = () => {
+    if (isLoading) {
+      return <p className="muted">Loading notes…</p>
+    }
+    if (error) {
+      return (
+        <div className="notes-empty">
+          <p>Couldn&apos;t load notes right now.</p>
+          <p className="small muted">{error}</p>
+        </div>
+      )
+    }
+    if (isNoteList(data)) {
+      if (data.length === 0) {
+        return (
+          <div className="notes-empty">
+            <p>No notes yet. Post the first one from the form.</p>
+          </div>
+        )
+      }
+      return (
+        <ul className="notes-list">
+          {data.map((note, i) => (
+            <li key={i} className="note">
+              {note.title && <h3>{String(note.title)}</h3>}
+              {note.content && <p>{String(note.content)}</p>}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    return <pre className="notes-raw">{JSON.stringify(data, null, 2)}</pre>
+  }
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-        backgroundColor: "var(--bg-color)",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          marginBottom: "20px",
-        }}
-      >
-        <button
-          onClick={handleGoBack}
-          style={{
-            backgroundColor: "transparent",
-            color: "var(--text-color)",
-            border: "none",
-            padding: "0px 20px 10px 20px",
-            borderRadius: "5px",
-            fontSize: "24px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <CircleArrowLeft size={45} />
-        </button>
-        <h1
-          style={{
-            fontSize: "48px",
-            fontWeight: "bold",
-            color: "var(--text-color)",
-          }}
-        >
-          Notes
-        </h1>
-        <div style={{ width: "50px" }} />
-      </div>
-      <div
-        style={{
-        }}
-      >
-        {isLoading ? (
-          <p>Loading message...</p>
-        ) : error ? (
-          <p>Error: {error}</p>
-        ) : (
-          <>
-            <div
-              style={{
-                fontSize: "18px",
-                color: "var(--text-color)",
-                display: "block"
-              }}
+    <div className="Notes page">
+      <Link to="/" className="back-link">
+        <ArrowLeft size={18} aria-hidden="true" />
+        Home
+      </Link>
+
+      <header className="page-head">
+        <h1>Meeting notes</h1>
+        <p>
+          What was discussed, what got built, and what to bring next time.
+          Anyone with an account can post.
+        </p>
+      </header>
+
+      <div className="notes-layout">
+        <section className="notes-feed" aria-label="Past notes">
+          {renderNotes()}
+        </section>
+
+        <aside className="notes-compose">
+          <form onSubmit={onSubmit} className="notes-form">
+            <h2>Post a note</h2>
+            <div className="field">
+              <label htmlFor="note-title">Title</label>
+              <input
+                id="note-title"
+                className="input"
+                type="text"
+                name="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Meetup, Sept 9"
+                required
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="note-content">Notes</label>
+              <textarea
+                id="note-content"
+                className="input"
+                name="content"
+                rows={7}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Who came, what people worked on, links worth sharing."
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isSaving}
             >
-              <p>{message}</p>
-            </div>
-            <div style={{ display: "block"}}>
-              <p>Please enter a new note:</p>
-              <div>
-                <label htmlFor="title" style={{paddingRight: "5px"}}>Title</label>
-                <input type="text" name="title" onChange={onTitleChange} />
-              </div>
-              <br/>
-              <div>
-                <label htmlFor="content" style={{paddingRight: "5px"}}>Content</label>
-                <textarea name="content" onChange={onNotesChange}>
-                </textarea>
-              </div>
-            </div>
-            <button type="submit" value={notes} onClick={onClick} style={{ width: "100px", height: "30px"}}>Submit</button>
-          </>
-        )}
+              {isSaving ? "Posting…" : "Post note"}
+            </button>
+            {!token && (
+              <p className="field-hint">
+                You need to <Link to="/login">log in</Link> to post.
+              </p>
+            )}
+          </form>
+        </aside>
       </div>
     </div>
   )

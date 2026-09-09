@@ -1,22 +1,47 @@
-import { CSSProperties, ReactNode } from "react"
+import { ReactNode } from "react"
+import { Link } from "react-router-dom"
 import "../css/Card.css"
 
-interface propType {
-  imageStyle?: CSSProperties
-  imageTextStyle?: CSSProperties
-  textStyle?: CSSProperties
-  imagetext?: ReactNode
-  text?: ReactNode
-};
+interface CardProps {
+  image?: string
+  alt?: string
+  title?: ReactNode
+  children?: ReactNode
+  to?: string
+  linkText?: string
+  className?: string
+}
 
-const Card: React.FC<propType> = ({imageStyle, imagetext, imageTextStyle, text, textStyle}: propType) => {
+/**
+ * A media-plus-copy card. Every prop is optional so it can also act as a
+ * plain surface for arbitrary children.
+ */
+const Card: React.FC<CardProps> = ({
+  image,
+  alt = "",
+  title,
+  children,
+  to,
+  linkText = "Learn more",
+  className = "",
+}: CardProps) => {
   return (
-    <div className="Card" role="base-card">
-      <div className="card-image" style={imageStyle ?? {}}>
-        <span style={imageTextStyle ?? {}}>{imagetext}</span>
+    <article className={`Card ${className}`.trim()} role="base-card">
+      {image && (
+        <div className="card-media">
+          <img src={image} alt={alt} loading="lazy" />
+        </div>
+      )}
+      <div className="card-body">
+        {title && <h3 className="card-title">{title}</h3>}
+        {children && <div className="card-text">{children}</div>}
+        {to && (
+          <Link to={to} className="btn btn-dark btn-sm card-link">
+            {linkText}
+          </Link>
+        )}
       </div>
-      <div style={textStyle ?? {}}>{text}</div>
-    </div>
+    </article>
   )
 }
 

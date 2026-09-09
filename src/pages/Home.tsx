@@ -2,171 +2,156 @@ import React from "react"
 import "../css/Home.css"
 import Card from "../components/Card"
 import DCCGathering from "../assets/dcc_gathering.webp"
-import MimiEye from "../assets/mimi_eye.gif"
 import CommunityImage from "../assets/community.jpg"
 import ProjectCarousel from "../components/ProjectCarousel"
-import { Link } from "react-router-dom"
+import { Coffee, Laptop, MapPin, MessageCircleQuestion } from "lucide-react"
+
+const MEETUP_URL = "https://www.meetup.com/dearborn-coding-club/"
+const SLACK_URL = "https://dearborncodingclub.slack.com"
+const MAPS_URL = "https://maps.app.goo.gl/ZvxnMHjYoDRCD7V27"
 
 const Home: React.FC = () => {
-  const imageTextStyle = {
-    fontSize: "36px",
-    fontWeight: "bold",
-    background:
-      "repeating-linear-gradient(white, white 54px, #f5c24f 54px, #f5c24f 108px)",
-    WebkitTextFillColor: "transparent",
-    WebkitBackgroundClip: "text",
-    cursor: "pointer",
-  }
-
-  const cardStyle = {
-    backgroundColor: "var(--bg-color)",
-    borderRadius: "15px",
-    border: "2px solid #f5c24f",
-    padding: "20px",
-    flex: 1,
-    margin: "0 10px",
-    minWidth: "250px",
-  }
-
   return (
     <div className="Home">
-      <div className="row">
-        <Card
-          imageStyle={{
-            backgroundImage: `url(${DCCGathering})`,
-            backgroundColor: "rgba(0, 0, 0, 0.65)",
-            backgroundBlendMode: "darken",
-            height: "500px",
-          }}
-          imageTextStyle={imageTextStyle}
-          imagetext={
-            <>
-              <p>Welcome to</p>
-              <p>Dearborn</p>
-              <p>Coding Club</p>
-            </>
-          }
-          textStyle={{ textAlign: "center" }}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "20px",
-          margin: "20px 0",
-        }}
-      >
-        <div style={cardStyle}>
-          <h3 style={{ marginBottom: "10px", color: "var(--text-color)" }}>
-            About Us
-          </h3>
-          <p style={{ color: "var(--text-color)" }}>
-            Come work on whatever side project that you&apos;re looking into while
-            getting to know some interesting folks and enjoying some Yemeni
-            coffee at Haraz Coffee in Dearborn! We&apos;re an inclusive group of
-            curious builders so bring questions, answers, projects, or just an
-            interest in meeting new people!
-          </p>
-        </div>
-        <div style={cardStyle}>
-          <h3 style={{ marginBottom: "10px", color: "var(--text-color)" }}>
-            Our Projects
-          </h3>
-          <p style={{ color: "var(--text-color)" }}>
-            If you&apos;re interested in collaborating, we&apos;re currently working on
-            this website for the group. We&apos;ve got a few repositories that manage
-            the infrastructure and the code:
-          </p>
-          <ul style={{ listStyleType: "none", padding: 0, margin: "10px 0" }}>
-            <li>
+      <section className="hero">
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <h1 className="hero-title" aria-label="Bring a project. Bring a question. Bring yourself.">
+              <span className="hero-line">Bring a project.</span>
+              <span className="hero-line">Bring a question.</span>
+              <span className="hero-line">Bring yourself.</span>
+            </h1>
+            <p className="lede hero-lede">
+              Dearborn Coding Club is a table of curious builders who meet over
+              Yemeni coffee to work on side projects, swap answers, and get to
+              know each other. Every level, every language, no agenda.
+            </p>
+            <div className="hero-actions">
               <a
-                href="https://github.com/dearborn-coding-club/website-base-backend"
-                className="link-color"
-                style={{ display: "inline-block", margin: "5px 0" }}
+                className="btn btn-primary"
+                href={MEETUP_URL}
+                target="_blank"
+                rel="noreferrer"
               >
-                website-base-backend
+                See upcoming meetups
               </a>
-            </li>
-            <li>
               <a
-                href="https://github.com/dearborn-coding-club/website-base-frontend"
-                className="link-color"
-                style={{ display: "inline-block", margin: "5px 0" }}
+                className="btn btn-ghost"
+                href={SLACK_URL}
+                target="_blank"
+                rel="noreferrer"
               >
-                website-base-frontend
+                Join the Slack
               </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/dearborn-coding-club/Terraform-infra-website"
-                className="link-color"
-                style={{ display: "inline-block", margin: "5px 0" }}
-              >
-                Terraform-infra-website
-              </a>
-            </li>
-          </ul>
+            </div>
+          </div>
+
+          <figure className="hero-photo">
+            <img
+              src={DCCGathering}
+              alt="Six club members working on laptops around a long wooden table at Haraz Coffee"
+              width={1024}
+              height={536}
+            />
+            <figcaption>The back table at Haraz Coffee, most weeks.</figcaption>
+          </figure>
         </div>
-        <div style={cardStyle}>
-          <h3 style={{ marginBottom: "10px", color: "var(--text-color)" }}>
-            Join Our Community
-          </h3>
-          <p style={{ color: "var(--text-color)" }}>
-            We&apos;ve recently started a Slack organization. Join us at{" "}
-            <a
-              href="https://dearborncodingclub.slack.com"
-              className="link-color"
-            >
-              dearborncodingclub.slack.com
-            </a>
-            . Space is limited, so we&apos;ll aim to secure the back table before it
-            fills up with other patrons.
+      </section>
+
+      <section className="where" aria-label="Where we meet">
+        <div className="where-inner">
+          <div className="where-place">
+            <MapPin size={22} aria-hidden="true" />
+            <div>
+              <strong>Haraz Coffee</strong>
+              <span>13810 Michigan Ave, Dearborn, MI 48126</span>
+            </div>
+          </div>
+          <p className="where-note">
+            We aim for the back table. Seats go fast, so arrive early and look
+            for the open laptops.
           </p>
+          <a
+            className="btn btn-dark btn-sm"
+            href={MAPS_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open in Maps
+          </a>
         </div>
-      </div>
-      <div className="row">
-        <Card
-          imageStyle={{
-            backgroundImage: `url(${MimiEye})`,
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-            backgroundBlendMode: "darken",
-            height: "300px",
-          }}
-          imageTextStyle={imageTextStyle}
-          imagetext={
-            <>
-              <p>Bring</p>
-              <p>Questions</p>
-              <p>And</p>
-              <p>Projects</p>
-            </>
-          }
-        />
-        <Card
-          imageStyle={{
-            backgroundImage: `url(${CommunityImage})`,
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-            backgroundBlendMode: "darken",
-            backgroundPosition: "0px 60%",
-            height: "300px",
-          }}
-          imageTextStyle={imageTextStyle}
-          imagetext={
-            <Link to={"/community"}>
-              <p>Meet the</p>
-              <p>Community</p>
-            </Link>
-          }
-        />
-      </div>
-      <div className="column" style={{backgroundColor: "#161e28"}}>
-        <div className="image-text-style" style={{ color: "white", cursor: "auto" }}>
-          <p>Know our <span className="heighlight">Projects</span></p>
+      </section>
+
+      <section className="section what">
+        <div className="container">
+          <div className="section-head">
+            <h2>What happens at the table</h2>
+            <p>
+              There is no curriculum and nobody presents. People show up with
+              whatever they are building and the rest follows.
+            </p>
+          </div>
+          <div className="what-grid">
+            <div className="what-item">
+              <Laptop size={26} aria-hidden="true" />
+              <h3>Work on your thing</h3>
+              <p>
+                A half-finished app, a homework problem, a Raspberry Pi that
+                will not boot. Bring it and make some progress alongside
+                people doing the same.
+              </p>
+            </div>
+            <div className="what-item">
+              <MessageCircleQuestion size={26} aria-hidden="true" />
+              <h3>Ask, and get asked</h3>
+              <p>
+                Stuck on something? Someone at the table has probably seen it.
+                Know something? Someone at the table probably needs it.
+              </p>
+            </div>
+            <div className="what-item">
+              <Coffee size={26} aria-hidden="true" />
+              <h3>Meet your neighbors</h3>
+              <p>
+                Students, career changers, and working engineers from around
+                metro Detroit. The coffee is a good excuse, the people are the
+                reason.
+              </p>
+            </div>
+          </div>
         </div>
-          <ProjectCarousel />
-      </div>
+      </section>
+
+      <section className="section projects">
+        <div className="container">
+          <div className="section-head">
+            <h2>Build the club&apos;s website with us</h2>
+            <p>
+              This site, its API, and the infrastructure behind it are all open
+              source and built by members. Pick a repository, open an issue, or
+              send a pull request. First contributions are welcome.
+            </p>
+          </div>
+        </div>
+        <ProjectCarousel />
+      </section>
+
+      <section className="section community-band">
+        <div className="container">
+          <Card
+            image={CommunityImage}
+            alt="A crowd of club members gathered together at a meetup"
+            title="Meet the community"
+            to="/community"
+            linkText="See who's here"
+          >
+            <p>
+              Browse the people who make up the club, see what they are working
+              on, and find someone to pair with at the next meetup.
+            </p>
+          </Card>
+        </div>
+      </section>
     </div>
   )
 }

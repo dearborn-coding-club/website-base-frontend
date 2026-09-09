@@ -1,43 +1,64 @@
 .Pagination {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 32px;
+  width: 100%;
 }
 
-.entries {
-    display: flex;
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.Pagination .entries div {
-    padding: 8px 16px;
-    text-decoration: none;
-    cursor: pointer;
-    user-select: none;
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
-
-.Pagination .entries div.active {
-    background-color: #f5c24f;
-    color: white;
-    border-radius: 5px;
-}
-  
-.Pagination .entries div:hover:not(.active) {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
+.page-btn:hover:not(:disabled):not(.active) {
+  background: var(--bg-sunk);
+  color: var(--ink);
 }
 
-.Pagination .entry-per-page {
-    width: 80px;
-    text-align: center;
+.page-btn.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  cursor: default;
 }
 
-@media screen and (max-width: 576px) {
-    .Pagination {
-        flex-direction: column;
-    }
+.page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination-per-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+.pagination-per-page .input {
+  width: 84px;
+  min-height: 40px;
+  text-align: center;
 }

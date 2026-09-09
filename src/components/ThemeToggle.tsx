@@ -5,14 +5,17 @@ import "../css/ThemeToggle.css"
 
 const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme()
+  const next = theme === "light" ? "dark" : "light"
 
   return (
-    <button onClick={toggleTheme} className="theme-toggle">
-      {theme === "light" ? (
-        <Moon className="theme-icon" size={30} color="black" />
-      ) : (
-        <Sun className="theme-icon" size={30} color="yellow" />
-      )}
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="icon-btn theme-toggle"
+      aria-label={`Switch to ${next} theme`}
+      title={`Switch to ${next} theme`}
+    >
+      {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
     </button>
   )
 }
