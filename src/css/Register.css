@@ -1,67 +1,93 @@
 .Register {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
     width: 100%;
-    padding-top: 30px;
-    height: 400px;
-}
-
-.register-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 250px;
-}
-
-input {
-    height: 40px;
-    border-radius: 10px;
-    border-color: var(--text-color);
-    background-color: var(--bg-color);
+    padding: clamp(24px, 6vw, 72px) 16px;
     color: var(--text-color);
-    padding-left: 5px;
 }
 
-input:hover {
-    border-color: var(--primary-color);
+.register-card {
+    width: min(100%, 480px);
+    padding: clamp(20px, 5vw, 36px);
+    border: 1px solid color-mix(in srgb, var(--text-color) 16%, transparent);
+    border-radius: 20px;
+    background: var(--card-bg-color);
+    text-align: left;
 }
 
-::placeholder {
-    font-weight: bold;
+.register-card h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 5vw, 2rem);
 }
 
-input[type=submit] {
-   font-weight: bold;
-   border-style: solid;
-   border-color: var(--text-color);
-   cursor: pointer;
+.register-card h1 + p {
+    margin: 4px 0 24px;
 }
 
-/* General styling for the requirements list */
-.password-requirements {
-    color: #ffffff; /* White text for dark background */
-    font-size: 14px;
-    margin-top: 20px;
+.register-card fieldset {
+    display: grid;
+    gap: 8px;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-.password-requirements ul {
-    list-style-type: disc;
-    padding-left: 20px;
+.register-card label {
+    font-weight: 600;
 }
 
-/* Styling for valid items */
-.password-requirements .valid {
-    color: var(--green-color); /* Green color for valid items */
+.register-card input {
+    width: 100%;
+    min-height: 44px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border: 1px solid color-mix(in srgb, var(--text-color) 50%, transparent);
+    font: inherit;
 }
 
-/* Styling for invalid items */
-.password-requirements .invalid {
-    color: var(--red-color); /* Red color for invalid items */
+.register-card :focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 3px;
 }
 
+.register-password-rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 155px), 1fr));
+    gap: 4px 10px;
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+    font-size: 0.875rem;
+}
 
-.errorMessage {
-    color: var(--red-color);
+.register-password-rules [data-met="true"] {
+    font-weight: 650;
+}
+
+.register-card button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: #252019;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.register-card button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.register-error {
+    margin: 0 0 8px;
+    padding-left: 10px;
+    border-left: 3px solid var(--red-color);
+}
+
+.register-sign-in {
+    margin: 20px 0 0;
+    text-align: center;
 }

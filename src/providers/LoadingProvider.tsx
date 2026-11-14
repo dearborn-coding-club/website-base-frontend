@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react'
 
 interface LoadingContextType {
     isLoading: boolean;
@@ -13,15 +13,15 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [isLoading, setIsLoading] = useState(false)
     const [callStack, setCallStack] = useState<boolean[]>([])
 
-    const startLoading = () => {
+    const startLoading = useCallback(() => {
         setCallStack(prev => {
             prev = structuredClone(prev)
             prev.push(true)
             return prev
         })
-    }
+    }, [])
 
-    const stopLoading = () => {
+    const stopLoading = useCallback(() => {
         setCallStack(prev => {
             if(prev.length < 1) {
                 return prev;
@@ -30,7 +30,7 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
             prev.pop()
             return prev
         })
-    }
+    }, [])
 
     useEffect(() => {
         setIsLoading(callStack.length > 0)

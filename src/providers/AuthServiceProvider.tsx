@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react'
 import { useLoadingProvider } from './LoadingProvider';
 
 interface AuthServiceContextType {
@@ -15,7 +15,8 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     const { startLoading, stopLoading } = useLoadingProvider()
 
-    const [token, setToken] = useState(localStorage.getItem("token"))
+    const [token, setToken] = useState(() => localStorage.getItem("token"))
+    const initialToken = useRef(token)
 
     const setUserToken = (token: string) => {
         localStorage.setItem('token', token)
@@ -23,7 +24,7 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
     }
 
     const logout = () => {
-        localStorage.clear()
+        localStorage.removeItem("token")
         setToken(null)
     }
 
@@ -61,30 +62,29 @@ export const AuthServiceProvider: React.FC<{ children: React.ReactNode }> = ({ c
     }
 
     useEffect(() => {
+        const savedToken = initialToken.current
+        if (!savedToken) return
+
+        const controller = new AbortController()
         startLoading()
-        if(token == null) {
-            fetch(AUTH_SERVER_URL + "/validate-token", {
+        fetch(AUTH_SERVER_URL + "/validate-token", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-            })
-            .then(res => {
-                if(res.status !== 200) {
-                    throw new Error()
-                }
-                stopLoading()
+            headers: { Authorization: `Bearer ${savedToken}` },
+            signal: controller.signal,
+        })
+            .then(response => {
+                if (response.status !== 401 && response.status !== 403) return
+                if (controller.signal.aborted || localStorage.getItem("token") !== savedToken) return
+                localStorage.removeItem("token")
+                setToken(null)
             })
             .catch(() => {
-                stopLoading()
-                logout()
+                // Keep the session when the auth service is temporarily unreachable.
             })
-        } else {
-            stopLoading()
-            logout()
-        }
-    },[])
+            .finally(stopLoading)
+
+        return () => controller.abort()
+    }, [AUTH_SERVER_URL, startLoading, stopLoading])
 
     return (
         <AuthServiceContext.Provider value={{token, login, logout}}>

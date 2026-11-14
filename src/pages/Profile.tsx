@@ -1,19 +1,8 @@
 import "../css/Profile.css"
 import DummyProfilePicture from "../assets/dummy-profile.png"
 import CircularProgressBar from "../components/CircularProgressBar"
-import React, { useEffect } from "react"
 
-const Profile: React.FC = () => {
-
-    useEffect(() => {
-        const fetchProfileData = async () => {
-            const response = await fetch("https://api.dearborncodingclub.com/profile")
-            const data = await response.json()
-            console.log(data)
-        };
-        fetchProfileData();
-    }, []);
-
+const Profile = () => {
     return (
         <div className="Profile">
 

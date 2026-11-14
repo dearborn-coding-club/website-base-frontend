@@ -1,53 +1,39 @@
-import React from "react"
+import { Link } from "react-router-dom"
 import "../css/Register.css"
-import useRegisterForm from "../hooks/useRegisterForm"
+import useRegisterForm, { passwordRequirements } from "../hooks/useRegisterForm"
 
-const Register: React.FC = () => {
-    const {
-        errorMessage,
-        registerOnSubmit,
-        password,
-        setPassword,
-        confirmPassword,
-        setConfirmPassword
-    } = useRegisterForm();
+export default function Register() {
+    const { errorMessage, isSubmitting, registerOnSubmit, password, setPassword } = useRegisterForm()
 
     return (
-        <div className="Register">
-            <form className="register-form-wrapper" onSubmit={registerOnSubmit}>
-                <input className="" type="text" name="username" placeholder="username"/>
-                <input className="" type="email" name="email" placeholder="email"/>
-                <input
-                    className=""
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <input
-                    className=""
-                    type="password"
-                    name="confirm-password"
-                    placeholder="confirm password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <input className="" value="Register" type="submit"/>
-                <label className="errorMessage">{errorMessage}</label>
-            </form>
-            <div className="password-requirements">
-                <h4>Password must contain:</h4>
-                <ul>
-                    <li className={password.length >= 8 ? "valid" : "invalid"}>At least 8 characters</li>
-                    <li className={/[A-Z]/.test(password) ? "valid" : "invalid"}>At least one uppercase letter</li>
-                    <li className={/[a-z]/.test(password) ? "valid" : "invalid"}>At least one lowercase letter</li>
-                    <li className={/\d/.test(password) ? "valid" : "invalid"}>At least one number</li>
-                    <li className={/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "valid" : "invalid"}>At least one special character</li>
-                </ul>
+        <main className="Register">
+            <div className="register-card">
+                <h1>Create your account</h1>
+                <p>Join Dearborn Coding Club online.</p>
+                <form onSubmit={registerOnSubmit} aria-busy={isSubmitting}>
+                    <fieldset disabled={isSubmitting}>
+                        <label htmlFor="register-username">Username</label>
+                        <input id="register-username" name="username" autoComplete="username" maxLength={150} required />
+                        <label htmlFor="register-email">Email address</label>
+                        <input id="register-email" name="email" type="email" autoComplete="email" maxLength={254} required />
+                        <label htmlFor="register-password">Password</label>
+                        <input id="register-password" name="password" type="password" autoComplete="new-password"
+                            aria-describedby="register-password-rules" onChange={(event) => setPassword(event.target.value)} required />
+                        <ul id="register-password-rules" className="register-password-rules" aria-label="Password requirements">
+                            {passwordRequirements.map(({ label, matches }) => (
+                                <li key={label} data-met={matches(password)}>
+                                    <span aria-hidden="true">{matches(password) ? "✓" : "○"}</span> {label}
+                                </li>
+                            ))}
+                        </ul>
+                        <label htmlFor="register-confirm-password">Confirm password</label>
+                        <input id="register-confirm-password" name="confirm-password" type="password" autoComplete="new-password" required />
+                        {errorMessage && <p className="register-error" role="alert">{errorMessage}</p>}
+                        <button type="submit">{isSubmitting ? "Creating account…" : "Create account"}</button>
+                    </fieldset>
+                </form>
+                <p className="register-sign-in">Already have an account? <Link to="/login">Sign in</Link></p>
             </div>
-        </div>
+        </main>
     )
 }
-
-export default Register
